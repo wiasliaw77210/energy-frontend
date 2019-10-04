@@ -1,0 +1,7 @@
+{
+  "extends": "@visuallylab/tslint-config-frontend",
+  "rules": {
+    "interface-name": [ true, "always-prefix" ],
+    "semicolon": [ true, "always" ]
+  }
+}
