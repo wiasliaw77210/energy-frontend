@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FunctionComponent, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import UserInfo from './user';
@@ -30,33 +30,28 @@ const TimeSpan = styled.span`
   opacity: 1;
 `;
 
-class Nav extends React.Component {
-  timer = undefined;
-  state = {
-    time: getCurrentTime(),
-  };
-  componentDidMount() {
-    this.timer = setInterval(() => {
-      this.setState({time: getCurrentTime()});
+const Nav: FunctionComponent = () => {
+  const [timeString, setTime] = useState(getCurrentTime());
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(getCurrentTime());
     }, 1000);
-  }
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
-  render() {
-    return (
-      <Navbar>
-        <Container>
-          <TitleImg src="/static/nav/program_icon.png"/>
-        </Container>
-        <UserInfo/>
-        <Navlink/>
-        <Container>
-          <TimeSpan>{this.state.time}</TimeSpan>
-        </Container>
-      </Navbar>
-    );
-  }
-}
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+  return (
+    <Navbar>
+      <Container>
+        <TitleImg src="/static/nav/program_icon.png"/>
+      </Container>
+      <UserInfo/>
+      <Navlink/>
+      <Container>
+        <TimeSpan>{timeString}</TimeSpan>
+      </Container>
+    </Navbar>
+  );
+};
 
 export default Nav;
