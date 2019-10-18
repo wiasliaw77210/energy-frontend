@@ -43,7 +43,7 @@ const Navlink: FunctionComponent = () => {
   const [path, setPath] = useState('/');
   useEffect(() => {
     setPath(window.location.pathname);
-  });
+  }, []);
   return (
     <Container>
       {linkConfig.map((link, index) => (
@@ -52,10 +52,10 @@ const Navlink: FunctionComponent = () => {
           onClick={() => Router.push(link.ref)}
         >
           <img
-            src={`/static/nav/${(path===link.ref)?Color.ORANGE:Color.WHITE}/${link.icon}.png`}
+            src={`/static/nav/${(path===link.ref) ? Color.ORANGE : Color.WHITE}/${link.icon}.png`}
           />
           <span
-            style={(path===link.ref)?{color:"#FFA000"}:{}}
+            style={(path===link.ref) ? {color:"#FFA000"} : {}}
           >
             {link.name}
           </span>
