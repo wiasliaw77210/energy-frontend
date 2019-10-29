@@ -1,29 +1,30 @@
-import React, {FunctionComponent, useState, useEffect} from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import UserInfo from './user';
-import Navlink from './link';
+import UserInfo from './UserInfo';
+import Navlinks from './Navlinks';
 
 const getCurrentTime = () => dayjs().format('YYYY/MM/DD HH:mm');
 
 const Navbar = styled.div`
   width: 262px;
-  height: 100vh;
-  background-color: #39625E;
+  background-color: #39625e;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-`;
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
   align-items: center;
+  padding-top: 23px;
+  padding-bottom: 54px;
 `;
-const TitleImg = styled.img`
-  margin: 20px 10px 10px 10px;
+
+const H1 = styled.div`
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 118px;
 `;
+
 const TimeSpan = styled.span`
-  padding: 3rem 0 1.25rem 0;
+  margin-top: 134px;
   font: 20px/24px Regular Roboto;
   letter-spacing: 0;
   color: #ffffff;
@@ -42,14 +43,10 @@ const Nav: FunctionComponent = () => {
   }, []);
   return (
     <Navbar>
-      <Container>
-        <TitleImg src="/static/nav/program_icon.png"/>
-      </Container>
-      <UserInfo/>
-      <Navlink/>
-      <Container>
-        <TimeSpan>{timeString}</TimeSpan>
-      </Container>
+      <H1>綠能交易平台</H1>
+      <UserInfo />
+      <Navlinks />
+      <TimeSpan>{timeString}</TimeSpan>
     </Navbar>
   );
 };
