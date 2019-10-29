@@ -19,11 +19,11 @@ const Page: React.FC<TProps> = ({ title, children }) => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="content">
+      <div className="container">
         <Nav />
         <div className="main">
           <h1 className="title">{title}</h1>
-          {children}
+          <div className="content">{children}</div>
         </div>
       </div>
       <style jsx global>{`
@@ -31,6 +31,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
         body {
           margin: 0;
           font-family: 'Roboto', sans-serif;
+          width: 100%;
         }
         *,
         *::before,
@@ -38,19 +39,23 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           box-sizing: border-box;
         }
 
+        .container {
+          display: flex;
+        }
+
         .title {
           font-size: 40px;
           line-height: 1.18;
           color: #707070;
           font-weight: normal;
-        }
-
-        .content {
-          display: flex;
+          margin-bottom: 84px;
         }
 
         .main {
+          display: flex;
           padding: 94px 64px;
+          flex: 1;
+          flex-direction: column;
         }
       `}</style>
     </div>
