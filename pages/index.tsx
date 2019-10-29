@@ -1,24 +1,6 @@
 import React from 'react';
-import Head from 'next/head';
-import Nav from '../components/nav';
+import Page from '../components/Page';
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel='icon' href='/static/favicon.ico' />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </Head>
-    <Nav />
-    <style jsx global>{`
-      html, body {
-        margin: 0;
-      }
-      *, *::before, *::after  {
-        box-sizing: border-box;
-      }
-    `}</style>
-  </div>
-);
+const Home = () => <Page title="競標動態">{/* { write your UI here } */}</Page>;
 
 export default Home;
