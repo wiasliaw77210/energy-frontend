@@ -30,7 +30,7 @@ export const AMIList: React.FC<Props> = ({ amis }) => (
         </ul>
         <style>{`
             .list {
-                width: 800px;
+                width: 40em;
                 padding: 0px;
                 background-color: white;
                 align-self: center;
