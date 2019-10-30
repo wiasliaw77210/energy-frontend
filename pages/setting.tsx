@@ -1,5 +1,6 @@
 import React from 'react';
 import Page from '../components/Page';
+import styled from 'styled-components';
 import { AMIList } from '../components/setting/AMIList';
 import { UserInfoList } from '../components/setting/UserInfoList';
 import { PowerType } from '../typing/PowerType';
@@ -23,10 +24,27 @@ const state = {
     type: PowerType.ESS
   }]
 }
+
+const ListItem = styled.li`
+  margin-right: 70px;
+  float: left;
+  list-style-type: none;
+`;
+
+const List = styled.ul`
+  width: 100%;
+`;
+
 const Setting = () => (
   <Page title="設定">
-    <UserInfoList/>
-    <AMIList amis={state.AMIs}/>
+    <List>
+      <ListItem>
+        <UserInfoList/>
+      </ListItem>
+      <ListItem>
+        <AMIList amis={state.AMIs}/>
+      </ListItem>
+    </List>
   </Page>
 );
 
