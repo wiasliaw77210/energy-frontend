@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import styled from 'styled-components';
 
-const Block = styled.div`
+const Block = styled.img`
   width: 1530px;
   height: 464px;
   object-fit: contain;
@@ -12,7 +12,7 @@ const Block = styled.div`
 `;
 
 const GraphContainer: FunctionComponent = () => {
-  return <Block></Block>;
+  return <Block src={`/static/home/4_building_fps15.gif`} alt="building" />;
 };
 
 export default GraphContainer;
