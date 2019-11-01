@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 const InfoBlock = styled.div`
@@ -28,7 +28,7 @@ interface Detail {
   price: string;
 }
 
-const MarketInfoDetail: React.FunctionComponent<Detail> = (props: Detail) => {
+const MarketInfoDetail: FunctionComponent<Detail> = (props: Detail) => {
   const buyStyle = {
     color: '#2e7d32',
   };
@@ -39,7 +39,6 @@ const MarketInfoDetail: React.FunctionComponent<Detail> = (props: Detail) => {
 
   return (
     <InfoBlock>
-      {/* <text className="sub-title" style={props.buy ? buyStyle : sellStyle}>{props.subTitle}</text> */}
       <text
         className="sub-title"
         style={props.subTitle == '買' ? buyStyle : sellStyle}
