@@ -56,6 +56,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           padding: 94px 64px;
           flex: 1;
           flex-direction: column;
+          background-color: #f1f2f1;
         }
       `}</style>
     </div>
