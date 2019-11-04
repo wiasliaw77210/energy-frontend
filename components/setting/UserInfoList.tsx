@@ -9,17 +9,21 @@ const attributes = [
     "以太坊地址"
 ]
 
-export const UserInfoList: React.FC = () => (
+interface UProps {
+    userInfos: object
+}
+
+export const UserInfoList: React.FC<UProps> = ({ userInfos }) => (
     <>
         <ul className="trasparent-list">
-            <EditUserIcon/>
+            <EditUserIcon />
             {attributes.map((k) => (
-                <UserInfoItem name={k} value='value'/>
+                <UserInfoItem name={k} value={userInfos[k]} />
             ))}
         </ul>
         <style>{`
             .trasparent-list {
-                width: 20em;
+                width: 30em;
                 padding: 0px;
             }
         `}

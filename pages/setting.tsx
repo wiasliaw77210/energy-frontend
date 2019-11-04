@@ -6,6 +6,12 @@ import { UserInfoList } from '../components/setting/UserInfoList';
 import { PowerType } from '../typing/PowerType';
 
 const state = {
+  UserInfos: {
+    "帳號": "ShalunC_BEMS",
+    "密碼": "************",
+    "地址": "711台南市歸仁區",
+    "以太坊地址": "0x207512e9c5183f0997aba…"
+  },
   AMIs: [{
     num: 1,
     id: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ…",
@@ -26,7 +32,7 @@ const state = {
 }
 
 const ListItem = styled.li`
-  margin-right: 70px;
+  margin-right: 80px;
   float: left;
   list-style-type: none;
 `;
@@ -39,10 +45,10 @@ const Setting = () => (
   <Page title="設定">
     <List>
       <ListItem>
-        <UserInfoList/>
+        <UserInfoList userInfos={state.UserInfos}/>
       </ListItem>
       <ListItem>
-        <AMIList amis={state.AMIs}/>
+        <AMIList amis={state.AMIs} />
       </ListItem>
     </List>
   </Page>
