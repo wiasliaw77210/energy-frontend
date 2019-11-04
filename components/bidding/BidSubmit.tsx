@@ -5,8 +5,7 @@ import dayjs from 'dayjs';
 
 const BidSubmitHeaders = {
   'Content-Type': 'application/json',
-  Authorization:
-    'Bearer 3MaTIcta709SxWZ88OkaLjKvNzgfFkxqr8WemUjeOKLZcImscV6WcziuFyfrbXjc',
+  Authorization: 'Bearer xxx',
 };
 
 const url_bidsubmit = 'http://140.116.247.120:5000/bidsubmit';
