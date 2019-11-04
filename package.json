@@ -17,6 +17,7 @@
     "next": "9.0.7",
     "react": "16.10.2",
     "react-dom": "16.10.2",
+    "react-virtualized": "^9.21.1",
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
