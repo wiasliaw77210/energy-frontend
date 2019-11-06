@@ -11,8 +11,7 @@ import styled from 'styled-components';
 
 const PowerInfoHeaders = {
   'Content-Type': 'application/json',
-  Authorization:
-    'Bearer 3MaTIcta709SxWZ88OkaLjKvNzgfFkxqr8WemUjeOKLZcImscV6WcziuFyfrbXjc',
+  Authorization: 'Bearer xxx',
 };
 
 const url_powerinfo = 'http://140.116.247.120:5000/power_info';
