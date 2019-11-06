@@ -11,11 +11,11 @@ const BidSubmitHeaders = {
 const url_bidsubmit = 'http://140.116.247.120:5000/bidsubmit';
 
 interface IProps {
-  bid_type: string;
+  bidding_type: string;
 }
 
-interface Row {
-  uuid: string;
+interface IRow {
+  id: string;
   date: string;
   time: number;
   volume: number;
@@ -23,15 +23,15 @@ interface Row {
   total_price: number;
 }
 
-interface TableState {
-  columns: Array<Column<Row>>;
+interface ITableState {
+  columns: Array<Column<IRow>>;
 }
 
-const Field: TableState = {
+const Field: ITableState = {
   columns: [
     {
-      field: 'uuid',
-      title: 'uuid',
+      field: 'id',
+      title: 'id',
       type: 'string',
       hidden: true,
     },
@@ -95,12 +95,12 @@ const Field: TableState = {
   ],
 };
 
-const BiddingTable: React.FC<IProps> = ({ bid_type }) => {
-  const [state] = React.useState<TableState>(Field);
+const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
+  const [state] = React.useState<ITableState>(Field);
 
   return (
     <MaterialTable
-      title={bid_type}
+      title={bidding_type}
       options={{
         actionsColumnIndex: -1,
         search: false,
@@ -114,7 +114,7 @@ const BiddingTable: React.FC<IProps> = ({ bid_type }) => {
           let url = url_bidsubmit;
           url += '?per_page=' + query.pageSize;
           url += '&page=' + (query.page + 1);
-          url += '&bid_type=' + bid_type;
+          url += '&bid_type=' + bidding_type;
           fetch(url, {
             method: 'get',
             headers: new Headers(BidSubmitHeaders),
@@ -133,65 +133,57 @@ const BiddingTable: React.FC<IProps> = ({ bid_type }) => {
         onRowAdd: newData =>
           new Promise(resolve => {
             setTimeout(() => {
-              let data = {
-                date: dayjs(newData['date']).format('YYYY/MM/DD'),
-                bid_type: bid_type,
+              const data = {
+                date: dayjs(newData.date).format('YYYY/MM/DD'),
+                bid_type: bidding_type,
                 start_time:
-                  dayjs(newData['date']).format('YYYY/MM/DD ') +
-                  newData['time'],
+                  dayjs(newData.date).format('YYYY/MM/DD ') + newData.time,
                 end_time:
-                  dayjs(newData['date']).format('YYYY/MM/DD ') +
-                  (Number(newData['time']) + 1),
-                value: newData['volume'],
-                price: newData['price'],
+                  dayjs(newData.date).format('YYYY/MM/DD ') +
+                  (Number(newData.time) + 1),
+                value: newData.volume,
+                price: newData.price,
               };
               fetch(url_bidsubmit, {
                 method: 'post',
                 headers: new Headers(BidSubmitHeaders),
                 body: JSON.stringify(data),
-              })
-                .then(response => response.json())
-                .then(response => console.log(response));
+              }).then(response => response.json());
               resolve();
             }, 600);
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
             setTimeout(() => {
-              let data = {
-                id: oldData['id'],
-                date: dayjs(newData['date']).format('YYYY/MM/DD'),
-                bid_type: bid_type,
+              const data = {
+                id: oldData.id,
+                date: dayjs(newData.date).format('YYYY/MM/DD'),
+                bid_type: bidding_type,
                 start_time:
-                  dayjs(newData['date']).format('YYYY/MM/DD ') +
-                  newData['time'],
+                  dayjs(newData.date).format('YYYY/MM/DD ') + newData.time,
                 end_time:
-                  dayjs(newData['date']).format('YYYY/MM/DD ') +
-                  (Number(newData['time']) + 1),
-                value: newData['volume'],
-                price: newData['price'],
+                  dayjs(newData.date).format('YYYY/MM/DD ') +
+                  (Number(newData.time) + 1),
+                value: newData.volume,
+                price: newData.price,
               };
               fetch(url_bidsubmit, {
                 method: 'put',
                 headers: new Headers(BidSubmitHeaders),
                 body: JSON.stringify(data),
-              })
-                .then(response => response.json())
-                .then(response => console.log(response));
+              }).then(response => response.json());
               resolve();
             }, 600);
           }),
         onRowDelete: oldData =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
-              let data = { id: oldData['id'] };
+              const data = { id: oldData.id };
               fetch(url_bidsubmit, {
                 method: 'delete',
                 headers: new Headers(BidSubmitHeaders),
                 body: JSON.stringify(data),
-              })
-                .then(response => response.json())
-                .then(response => console.log(response));
+              }).then(response => response.json());
               resolve();
             }, 600);
           }),

@@ -12,8 +12,8 @@ const BidTable = styled.div`
 const Bidding = () => (
   <Page title="Bidding">
     <BidTable>
-      <BiddingTable bid_type={'buy'} />
-      <BiddingTable bid_type={'sell'} />
+      <BiddingTable bidding_type={'buy'} />
+      <BiddingTable bidding_type={'sell'} />
     </BidTable>
   </Page>
 );
