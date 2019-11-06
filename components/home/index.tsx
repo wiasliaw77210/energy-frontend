@@ -17,8 +17,8 @@ const HomeContainer: FunctionComponent = () => {
   return (
     <div>
       <UpperContainer>
-        <CurrentTimeBlock></CurrentTimeBlock>
-        <BiddingInfo></BiddingInfo>
+        <CurrentTimeBlock />
+        <BiddingInfo />
       </UpperContainer>
       <GraphContainer />
     </div>
