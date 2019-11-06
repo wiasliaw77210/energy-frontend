@@ -11,12 +11,13 @@ import styled from 'styled-components';
 
 const PowerInfoHeaders = {
   'Content-Type': 'application/json',
-  Authorization: 'Bearer xxxx',
+  Authorization:
+    'Bearer 3MaTIcta709SxWZ88OkaLjKvNzgfFkxqr8WemUjeOKLZcImscV6WcziuFyfrbXjc',
 };
 
 const url_powerinfo = 'http://140.116.247.120:5000/power_info';
 
-interface PowerInfoData {
+interface IPowerInfoData {
   id: string;
   date: string;
   time: string;
@@ -25,11 +26,11 @@ interface PowerInfoData {
   address: string;
 }
 
-interface TableState {
-  columns: Array<Column<PowerInfoData>>;
+interface ITableState {
+  columns: Array<Column<IPowerInfoData>>;
 }
 
-const Field: TableState = {
+const Field: ITableState = {
   columns: [
     {
       field: 'date',
@@ -86,7 +87,7 @@ const DatePicker = styled.div`
 `;
 
 function PowerInfoTable() {
-  const [state] = React.useState<TableState>(Field);
+  const [state] = React.useState<ITableState>(Field);
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     new Date(dayjs().format('YYYY/MM/DD')),
   );
