@@ -22,13 +22,13 @@ const InfoBlock = styled.div`
   }
 `;
 
-interface Detail {
+interface IDetail {
   subTitle: string;
   value: string;
   price: string;
 }
 
-const MarketInfoDetail: FunctionComponent<Detail> = (props: Detail) => {
+const MarketInfoDetail: FunctionComponent<IDetail> = (props: IDetail) => {
   const buyStyle = {
     color: '#2e7d32',
   };
