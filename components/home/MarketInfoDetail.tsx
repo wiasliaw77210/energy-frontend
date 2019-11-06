@@ -41,7 +41,7 @@ const MarketInfoDetail: FunctionComponent<Detail> = (props: Detail) => {
     <InfoBlock>
       <text
         className="sub-title"
-        style={props.subTitle == '買' ? buyStyle : sellStyle}
+        style={props.subTitle === '買' ? buyStyle : sellStyle}
       >
         {props.subTitle}
       </text>
