@@ -6,7 +6,7 @@ import BiddingTable from '../components/bidding/BidSubmit';
 
 const BidTable = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const Bidding = () => (

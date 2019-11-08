@@ -5,10 +5,16 @@ import dayjs from 'dayjs';
 
 const BidSubmitHeaders = {
   'Content-Type': 'application/json',
-  Authorization: 'Bearer xxx',
+  Authorization:
+    'Bearer 3MaTIcta709SxWZ88OkaLjKvNzgfFkxqr8WemUjeOKLZcImscV6WcziuFyfrbXjc',
 };
+// const BidSubmitHeaders = {
+//   'Content-Type': 'application/json',
+//   Authorization: 'Bearer ' + process.env.TOKEN,
+// };
 
 const url_bidsubmit = 'http://140.116.247.120:5000/bidsubmit';
+// const url_bidsubmit = process.env.HOST + '/bidsubmit';
 
 interface IProps {
   bidding_type: string;
@@ -107,6 +113,11 @@ const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
         headerStyle: {
           textAlign: 'right',
         },
+        pageSize: 12,
+      }}
+      style={{
+        width: '733px',
+        height: '795px',
       }}
       columns={state.columns}
       data={query =>
