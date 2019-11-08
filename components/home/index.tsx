@@ -10,7 +10,7 @@ const UpperContainer = styled.div`
   height: 336px;
   display: flex;
   flex-direction: row;
-  margin-top: -70px;
+  justify-content: space-between;
 `;
 
 const HomeContainer: FunctionComponent = () => {

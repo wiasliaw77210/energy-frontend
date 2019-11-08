@@ -39,15 +39,15 @@ const MarketInfoDetail: FunctionComponent<IDetail> = (props: IDetail) => {
 
   return (
     <InfoBlock>
-      <text
+      <span
         className="sub-title"
         style={props.subTitle === '買' ? buyStyle : sellStyle}
       >
         {props.subTitle}
-      </text>
-      <text className="detail">
+      </span>
+      <span className="detail">
         {props.value + 'kWh  $' + props.price + '/kWh'}
-      </text>
+      </span>
     </InfoBlock>
   );
 };

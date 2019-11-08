@@ -10,16 +10,15 @@ const getNextTime = () =>
     .format('HH');
 
 const Block = styled.div`
-  width: 760px;
+  width: calc(50% - 13px);
   height: 336px;
   border-radius: 10px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
-  margin: 5px;
   padding: 20px;
 `;
 
-const Title = styled.text`
+const Title = styled.span`
   width: 100%;
   height: 30px;
   font-size: 22px;
@@ -47,7 +46,7 @@ const TimeContainer = styled.div`
   }
 `;
 
-const Time = styled.text`
+const Time = styled.span`
   font-family: Roboto;
   font-size: 56px;
   font-weight: normal;

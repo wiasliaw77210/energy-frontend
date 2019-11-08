@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Nav from './nav';
 
@@ -32,6 +32,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           margin: 0;
           font-family: 'Roboto', sans-serif;
           width: 100%;
+          overflow: hidden;
         }
         *,
         *::before,
@@ -48,7 +49,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           line-height: 1.18;
           color: #707070;
           font-weight: normal;
-          margin-bottom: 84px;
+          margin: 20px 0 20px 0;
         }
 
         .main {
