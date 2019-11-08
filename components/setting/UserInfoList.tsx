@@ -13,8 +13,8 @@ export const UserInfoList: React.FC<IProps> = ({ userInfos }) => (
     <div className="trasparent-list">
       <EditUserIcon />
       <ul>
-        {attributes.map(k => (
-          <UserInfoItem name={k} value={userInfos[k]} />
+        {attributes.map((k, index) => (
+          <UserInfoItem name={k} value={userInfos[k]} key={index} />
         ))}
       </ul>
     </div>

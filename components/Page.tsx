@@ -32,7 +32,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           margin: 0;
           font-family: 'Roboto', sans-serif;
           width: 100%;
-          overflow: hidden;
+          overflow-x: hidden;
         }
         *,
         *::before,
