@@ -14,7 +14,7 @@ const PowerInfoHeaders = {
   Authorization: 'Bearer xxx',
 };
 
-const url_powerinfo = 'http://140.116.247.120:5000/power_info';
+const url_powerinfo = process.env.HOST + '/power_info';
 
 interface IPowerInfoData {
   id: string;
