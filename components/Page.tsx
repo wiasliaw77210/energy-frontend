@@ -48,7 +48,6 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           line-height: 1.18;
           color: #707070;
           font-weight: normal;
-          margin-bottom: 84px;
         }
 
         .main {
