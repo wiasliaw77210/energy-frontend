@@ -1,6 +1,6 @@
 import React, { FunctionComponent, forwardRef, useEffect } from 'react';
 import MaterialTable, { Column } from 'material-table';
-
+import styled from 'styled-components';
 import dayjs from 'dayjs';
 
 const BidSubmitHeaders = {
@@ -80,120 +80,165 @@ const Field: ITableState = {
       field: 'volume',
       title: '度數',
       cellStyle: { textAlign: 'center', width: '120px' },
+      render: rowData => `${rowData.volume}kWh`,
     },
     {
       field: 'price',
       title: '單價',
       cellStyle: { textAlign: 'center', width: '120px' },
+      render: rowData => `$${rowData.price}/kWh`,
     },
     {
       field: 'total_price',
       title: '總金額',
       editable: 'never',
       cellStyle: { textAlign: 'center' },
+      render: rowData => `$${rowData.total_price}`,
     },
   ],
 };
 
+const BiddingMaterialTable = styled.div`
+  .MuiToolbar-root:not(.MuiTablePagination-toolbar) {
+    padding: 50px 0;
+  }
+  .MuiTablePagination-toolbar {
+    justify-content: end;
+  }
+  .MuiToolbar-root > div:first-child {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+  }
+  .MuiToolbar-root > div:first-child > h6 {
+    color: ${props => (props.color === 'sell' ? '#2e7d32' : '#d32f2f')};
+    font-size: 32px;
+  }
+  .MuiToolbar-gutters {
+    padding-left: 0;
+  }
+  .MuiButtonBase-root[title='Edit'] {
+    color: #ffa000;
+  }
+  .MuiButtonBase-root[title='Delete'] {
+    color: #c43f38;
+  }
+  .MuiTableSortLabel-icon {
+    position: absolute;
+    right: -30px;
+  }
+  // .MuiButtonBase-root
+`;
+
 const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
   const [state] = React.useState<ITableState>(Field);
-
   return (
-    <MaterialTable
-      title={bidding_type}
-      options={{
-        actionsColumnIndex: -1,
-        search: false,
-        headerStyle: {
-          textAlign: 'right',
-        },
-        pageSize: 12,
-      }}
-      style={{
-        width: '733px',
-        height: '795px',
-      }}
-      columns={state.columns}
-      data={query =>
-        new Promise((resolve, reject) => {
-          let url = url_bidsubmit;
-          url += '?per_page=' + query.pageSize;
-          url += '&page=' + (query.page + 1);
-          url += '&bid_type=' + bidding_type;
-          fetch(url, {
-            method: 'get',
-            headers: new Headers(BidSubmitHeaders),
-          })
-            .then(response => response.json())
-            .then(result => {
-              resolve({
-                data: result.data,
-                page: result.page - 1,
-                totalCount: result.totalCount,
-              });
-            });
-        })
-      }
-      editable={{
-        onRowAdd: newData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              const data = {
-                date: dayjs(newData.date).format('YYYY/MM/DD'),
-                bid_type: bidding_type,
-                start_time:
-                  dayjs(newData.date).format('YYYY/MM/DD ') + newData.time,
-                end_time:
-                  dayjs(newData.date).format('YYYY/MM/DD ') +
-                  (Number(newData.time) + 1),
-                value: newData.volume,
-                price: newData.price,
-              };
-              fetch(url_bidsubmit, {
-                method: 'post',
-                headers: new Headers(BidSubmitHeaders),
-                body: JSON.stringify(data),
-              }).then(response => response.json());
-              resolve();
-            }, 600);
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              const data = {
-                id: oldData.id,
-                date: dayjs(newData.date).format('YYYY/MM/DD'),
-                bid_type: bidding_type,
-                start_time:
-                  dayjs(newData.date).format('YYYY/MM/DD ') + newData.time,
-                end_time:
-                  dayjs(newData.date).format('YYYY/MM/DD ') +
-                  (Number(newData.time) + 1),
-                value: newData.volume,
-                price: newData.price,
-              };
-              fetch(url_bidsubmit, {
-                method: 'put',
-                headers: new Headers(BidSubmitHeaders),
-                body: JSON.stringify(data),
-              }).then(response => response.json());
-              resolve();
-            }, 600);
-          }),
-        onRowDelete: oldData =>
+    <BiddingMaterialTable color={bidding_type}>
+      <MaterialTable
+        title={`${bidding_type === 'sell' ? '賣' : '買'}`}
+        options={{
+          actionsColumnIndex: -1,
+          search: false,
+          headerStyle: {
+            textAlign: 'center',
+            color: '#707070',
+            fontSize: '20px',
+          },
+          pageSize: 10,
+        }}
+        style={{
+          width: '38vw',
+          height: 'auto',
+          boxShadow: '0 0 0',
+          color: '#707070',
+          fontSize: '20px',
+        }}
+        localization={{
+          header: {
+            actions: '',
+          },
+        }}
+        columns={state.columns}
+        data={query =>
           new Promise((resolve, reject) => {
-            setTimeout(() => {
-              const data = { id: oldData.id };
-              fetch(url_bidsubmit, {
-                method: 'delete',
-                headers: new Headers(BidSubmitHeaders),
-                body: JSON.stringify(data),
-              }).then(response => response.json());
-              resolve();
-            }, 600);
-          }),
-      }}
-    />
+            const url = `${url_bidsubmit}?per_page=${
+              query.pageSize
+            }&page=${query.page + 1}&bid_type=${bidding_type}`;
+            fetch(url, {
+              method: 'get',
+              headers: new Headers(BidSubmitHeaders),
+            })
+              .then(response => response.json())
+              .then(result => {
+                resolve({
+                  data: result.data,
+                  page: result.page - 1,
+                  totalCount: result.totalCount,
+                });
+              });
+          })
+        }
+        editable={{
+          onRowAdd: newData =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                const data = {
+                  date: dayjs(newData.date).format('YYYY/MM/DD'),
+                  bid_type: bidding_type,
+                  start_time:
+                    dayjs(newData.date).format('YYYY/MM/DD ') + newData.time,
+                  end_time:
+                    dayjs(newData.date).format('YYYY/MM/DD ') +
+                    (Number(newData.time) + 1),
+                  value: newData.volume,
+                  price: newData.price,
+                };
+                fetch(url_bidsubmit, {
+                  method: 'post',
+                  headers: new Headers(BidSubmitHeaders),
+                  body: JSON.stringify(data),
+                }).then(response => response.json());
+                resolve();
+              }, 600);
+            }),
+          onRowUpdate: (newData, oldData) =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                const data = {
+                  id: oldData.id,
+                  date: dayjs(newData.date).format('YYYY/MM/DD'),
+                  bid_type: bidding_type,
+                  start_time:
+                    dayjs(newData.date).format('YYYY/MM/DD ') + newData.time,
+                  end_time:
+                    dayjs(newData.date).format('YYYY/MM/DD ') +
+                    (Number(newData.time) + 1),
+                  value: newData.volume,
+                  price: newData.price,
+                };
+                fetch(url_bidsubmit, {
+                  method: 'put',
+                  headers: new Headers(BidSubmitHeaders),
+                  body: JSON.stringify(data),
+                }).then(response => response.json());
+                resolve();
+              }, 600);
+            }),
+          onRowDelete: oldData =>
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                const data = { id: oldData.id };
+                fetch(url_bidsubmit, {
+                  method: 'delete',
+                  headers: new Headers(BidSubmitHeaders),
+                  body: JSON.stringify(data),
+                }).then(response => response.json());
+                resolve();
+              }, 600);
+            }),
+        }}
+      />
+    </BiddingMaterialTable>
   );
 };
 
