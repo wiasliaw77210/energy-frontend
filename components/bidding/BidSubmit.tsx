@@ -93,7 +93,6 @@ const Field: ITableState = {
       title: '總金額',
       editable: 'never',
       cellStyle: { textAlign: 'center' },
-      render: rowData => `$${rowData.total_price}`,
     },
   ],
 };
@@ -129,6 +128,10 @@ const BiddingMaterialTable = styled.div`
   }
   .MuiButtonBase-root {
     font-weight: 300;
+  }
+
+  .MuiInputBase-root.MuiInput-root {
+    width: 100%;
   }
 `;
 
