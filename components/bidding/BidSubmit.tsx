@@ -127,7 +127,9 @@ const BiddingMaterialTable = styled.div`
     position: absolute;
     right: -30px;
   }
-  // .MuiButtonBase-root
+  .MuiButtonBase-root {
+    font-weight: 300;
+  }
 `;
 
 const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
