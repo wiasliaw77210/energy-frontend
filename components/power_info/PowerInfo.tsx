@@ -1,11 +1,5 @@
 import 'date-fns';
-import React, {
-  FunctionComponent,
-  forwardRef,
-  useEffect,
-  useState,
-  PureComponent,
-} from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -145,7 +139,7 @@ const BiddingMaterialTable = styled.div`
   }
 `;
 
-function PowerInfoTable() {
+const PowerInfoTable: FunctionComponent = () => {
   const [state] = React.useState<ITableState>(Field);
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     new Date(dayjs().format('YYYY/MM/DD')),
@@ -167,9 +161,8 @@ function PowerInfoTable() {
     const response = await fetch(url, {
       method: 'get',
       headers: PowerInfoHeaders,
-    });
-    const res = await response.json();
-    setChart(res);
+    }).then(resp => resp.json());
+    setChart(response);
   }
   useEffect(() => {
     fetchMyAPI();
@@ -294,6 +287,6 @@ function PowerInfoTable() {
       </BiddingMaterialTable>
     </>
   );
-}
+};
 
 export default PowerInfoTable;
