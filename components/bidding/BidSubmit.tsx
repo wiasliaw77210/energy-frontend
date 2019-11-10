@@ -103,6 +103,7 @@ const BiddingMaterialTable = styled.div`
   }
   .MuiTablePagination-toolbar {
     justify-content: end;
+    color: #707070;
   }
   .MuiToolbar-root > div:first-child {
     position: absolute;
