@@ -133,6 +133,9 @@ const BiddingMaterialTable = styled.div`
   .MuiInputBase-root.MuiInput-root {
     width: 100%;
   }
+  .MuiTableCell-root {
+    font-size: 20px;
+  }
 `;
 
 const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
@@ -164,25 +167,21 @@ const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
           },
         }}
         columns={state.columns}
-        data={query =>
-          new Promise((resolve, reject) => {
-            const url = `${url_bidsubmit}?per_page=${
-              query.pageSize
-            }&page=${query.page + 1}&bid_type=${bidding_type}`;
-            fetch(url, {
-              method: 'get',
-              headers: new Headers(BidSubmitHeaders),
-            })
-              .then(response => response.json())
-              .then(result => {
-                resolve({
-                  data: result.data,
-                  page: result.page - 1,
-                  totalCount: result.totalCount,
-                });
-              });
-          })
-        }
+        data={async query => {
+          const url = `${url_bidsubmit}?per_page=${
+            query.pageSize
+          }&page=${query.page + 1}&bid_type=${bidding_type}`;
+          const response = await fetch(url, {
+            method: 'get',
+            headers: new Headers(BidSubmitHeaders),
+          });
+          const result = await response.json();
+          return {
+            data: result.data,
+            page: result.page - 1,
+            totalCount: result.totalCount,
+          };
+        }}
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
