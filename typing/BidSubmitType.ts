@@ -1,4 +1,4 @@
-export interface BidSubmitData {
+export interface IBidSubmitData {
   date: string;
   time: string;
   volume: string;

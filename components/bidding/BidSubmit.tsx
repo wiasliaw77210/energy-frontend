@@ -171,11 +171,11 @@ const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
           const url = `${url_bidsubmit}?per_page=${
             query.pageSize
           }&page=${query.page + 1}&bid_type=${bidding_type}`;
-          const response = await fetch(url, {
+
+          const result = await fetch(url, {
             method: 'get',
             headers: new Headers(BidSubmitHeaders),
-          });
-          const result = await response.json();
+          }).then(resp => resp.json());
           return {
             data: result.data,
             page: result.page - 1,
@@ -229,7 +229,7 @@ const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
               }, 600);
             }),
           onRowDelete: oldData =>
-            new Promise((resolve, reject) => {
+            new Promise(resolve => {
               setTimeout(() => {
                 const data = { id: oldData.id };
                 fetch(url_bidsubmit, {
