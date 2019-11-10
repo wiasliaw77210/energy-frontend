@@ -1,7 +1,7 @@
-import { PowerType } from "./PowerType";
+import { PowerType } from './PowerType';
 
 export interface ConnectedAMI {
-    num: number,
-    id: string,
-    type: PowerType 
-} 
+  num: number;
+  id: string;
+  type: PowerType;
+}
