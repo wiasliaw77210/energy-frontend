@@ -179,10 +179,24 @@ function PowerInfoTable() {
           margin={{ top: 20, right: 20, left: 10, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis
+            dataKey="name"
+            label={{
+              value: '日期',
+              position: 'insideBottomRight',
+              offset: -10,
+            }}
+          />
+          <YAxis
+            label={{ value: 'kWh', position: 'insideTopLeft', offset: 0 }}
+          />
           <Tooltip />
-          <Legend />
+          <Legend
+            align="right"
+            layout="vertical"
+            verticalAlign="middle"
+            wrapperStyle={{ paddingLeft: '20px' }}
+          />
           <Line
             type="monotone"
             dataKey="Demand"
@@ -244,7 +258,14 @@ function PowerInfoTable() {
             search: false,
             headerStyle: {
               textAlign: 'center',
+              color: '#707070',
+              fontSize: '20px',
             },
+          }}
+          style={{
+            boxShadow: '0 0 0',
+            color: '#707070',
+            fontSize: '20px',
           }}
           tableRef={tableRef}
           columns={state.columns}
