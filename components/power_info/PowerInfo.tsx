@@ -120,6 +120,7 @@ const BiddingMaterialTable = styled.div`
   }
   .MuiTablePagination-toolbar {
     justify-content: end;
+    color: #707070;
   }
   .MuiToolbar-root > div:first-child {
     position: absolute;
@@ -138,6 +139,9 @@ const BiddingMaterialTable = styled.div`
   }
   .MuiButtonBase-root {
     font-weight: 300;
+  }
+  .MuiTableCell-root {
+    font-size: 20px;
   }
 `;
 
