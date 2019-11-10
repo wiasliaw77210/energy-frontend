@@ -273,27 +273,23 @@ function PowerInfoTable() {
           }}
           tableRef={tableRef}
           columns={state.columns}
-          data={query =>
-            new Promise((resolve, reject) => {
-              const url = `${url_powerinfo}?per_page=${
-                query.pageSize
-              }&page=${query.page + 1}&time=${dayjs(selectedDate).format(
-                'YYYY/MM/DD',
-              )}`;
-              fetch(url, {
-                method: 'get',
-                headers: new Headers(PowerInfoHeaders),
-              })
-                .then(response => response.json())
-                .then(result => {
-                  resolve({
-                    data: result.data,
-                    page: result.page - 1,
-                    totalCount: result.totalCount,
-                  });
-                });
-            })
-          }
+          data={async query => {
+            const url = `${url_powerinfo}?per_page=${
+              query.pageSize
+            }&page=${query.page + 1}&time=${dayjs(selectedDate).format(
+              'YYYY/MM/DD',
+            )}`;
+            const response = await fetch(url, {
+              method: 'get',
+              headers: new Headers(PowerInfoHeaders),
+            });
+            const result = await response.json();
+            return {
+              data: result.data,
+              page: result.page - 1,
+              totalCount: result.totalCount,
+            };
+          }}
         />
       </BiddingMaterialTable>
     </>
