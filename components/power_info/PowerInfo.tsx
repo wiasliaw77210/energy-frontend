@@ -180,7 +180,7 @@ function PowerInfoTable() {
       <ChartsContainer height={340}>
         <LineChart
           data={chart_data}
-          margin={{ top: 20, right: 20, left: 10, bottom: 20 }}
+          margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
