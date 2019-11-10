@@ -130,7 +130,6 @@ const BiddingMaterialTable = styled.div`
   .MuiButtonBase-root {
     font-weight: 300;
   }
-
   .MuiInputBase-root.MuiInput-root {
     width: 100%;
   }
