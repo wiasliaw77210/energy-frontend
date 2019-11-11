@@ -21,7 +21,7 @@ export const EditUserIcon: React.FC = () => (
       <button>更改頭像</button>
     </div>
 
-    <span>一期建物 BEMS</span>
+    <span>沙崙綠能科學城C區BEMS</span>
 
     <style jsx>{`
       .icon {
