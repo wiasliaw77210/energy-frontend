@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.2",

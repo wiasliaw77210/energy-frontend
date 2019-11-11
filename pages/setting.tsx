@@ -3,7 +3,7 @@ import Page from '../components/Page';
 import styled from 'styled-components';
 import { AMIList } from '../components/setting/AMIList';
 import { UserInfoList } from '../components/setting/UserInfoList';
-import { PowerType } from '../typing/PowerType';
+import { PowerType } from '../typings/PowerType';
 
 const state = {
   UserInfos: {

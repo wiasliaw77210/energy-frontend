@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ConnectedAMI } from '../../typing/ConnectedAMI';
+import { ConnectedAMI } from '../../typings/ConnectedAMI';
 import { AMIListItem } from './AMIListItem';
 
 const columConfig = [
