@@ -87,8 +87,8 @@ const CurrentTimeBlock: FunctionComponent = () => {
         <Time>{hour + ' : 00 - ' + getNextTime() + ' : 00'}</Time>
       </TimeContainer>
       <MarketInfo>
-        <MarketInfoDetail subTitle={'買'} value={'-'} price={'-'} />
-        <MarketInfoDetail subTitle={'賣'} value={'10'} price={'5'} />
+        <MarketInfoDetail subTitle={'買'} value={'40'} price={'5'} />
+        <MarketInfoDetail subTitle={'賣'} value={'20'} price={'5'} />
       </MarketInfo>
     </Block>
   );
