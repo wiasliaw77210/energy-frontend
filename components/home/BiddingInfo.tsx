@@ -48,74 +48,44 @@ const BiddingInfoContainer = styled.div`
 
 const testing_data = [
   {
-    date: '2019/09/01',
-    time: '13:00 - 14:00',
-    success: true,
-    value: 10,
-    price: 5,
-  },
-  {
-    date: '2019/08/25',
-    time: '11:00 - 12:00',
-    success: false,
-    value: 10,
-    price: 10,
-  },
-  {
-    date: '2019/08/24',
-    time: '18:00 - 19:00',
-    success: true,
-    value: 10,
-    price: 5,
-  },
-  {
-    date: '2019/08/23',
-    time: '15:00 - 16:00',
-    success: true,
-    value: 5,
-    price: 5,
-  },
-  {
-    date: '2019/08/20',
-    time: '18:00 - 19:00',
-    success: true,
-    value: 10,
-    price: 5,
-  },
-  {
-    date: '2019/08/08',
-    time: '05:00 - 06:00',
-    success: false,
-    value: 10,
-    price: 5,
-  },
-  {
-    date: '2019/07/27',
-    time: '23:00 - 00:00',
-    success: false,
-    value: 10,
-    price: 5,
-  },
-  {
-    date: '2019/07/15',
+    date: '2019/11/14',
     time: '10:00 - 11:00',
+    bid_type: 'buy',
     success: true,
-    value: 10,
+    value: 20,
     price: 5,
   },
   {
-    date: '2019/06/30',
-    time: '01:00 - 02:00',
+    date: '2019/11/14',
+    time: '10:00 - 11:00',
+    bid_type: 'buy',
     success: true,
-    value: 10,
+    value: 20,
     price: 5,
   },
   {
-    date: '2019/06/26',
-    time: '00:00 - 01:00',
+    date: '2019/11/14',
+    time: '10:00 - 11:00',
+    bid_type: 'sell',
+    success: true,
+    value: 20,
+    price: 5,
+  },
+  {
+    date: '2019/11/13',
+    time: '11:00 - 12:00',
+    bid_type: 'sell',
+    success: true,
+    value: 20,
+    price: 5,
+  },
+  {
+    date: '2019/11/12',
+    time: '10:00 - 11:00',
+    bid_type: 'buy',
     success: false,
-    value: 10,
-    price: 5,
+    value: 20,
+    price: 4.5,
   },
 ];
 
@@ -130,6 +100,9 @@ const BiddingInfo: FunctionComponent = () => {
               <tr key={index}>
                 <td>{data.date}</td>
                 <td>{data.time}</td>
+                <td>{`投標種類 : ${
+                  data.bid_type === 'sell' ? '賣' : '買'
+                }`}</td>
                 <td>{data.success ? '得標成功' : '未得標'}</td>
                 <td>{'得標度數 : ' + data.value + 'kWh'}</td>
                 <td>{'單價 : $' + data.price + '/kWh'}</td>
