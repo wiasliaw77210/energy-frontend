@@ -96,7 +96,7 @@ const TableData: React.FC<IProps> = (props: IProps) => {
           isSelect={filter === EFilter.PROCESS ? true : false}
           onClick={() => setFilter(EFilter.PROCESS)}
         >
-          <span>執標中</span>
+          <span>執行中</span>
         </FilterSelect>
         <FilterSelect
           isSelect={filter === EFilter.FINALLY ? true : false}
@@ -158,6 +158,7 @@ const TableData: React.FC<IProps> = (props: IProps) => {
               <span style={{ width: '40%' }}>${item.average_price}/kWh</span>
               <span style={{ width: '40%' }}>
                 <TxLink
+                  target="_blank"
                   href={
                     item.transaction_hash
                       ? `https://ropsten.etherscan.io/tx/${item.transaction_hash}`

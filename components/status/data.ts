@@ -34,7 +34,7 @@ export const fakedata = [
       address: '台南市歸仁區高發二路360號D區',
     },
     bid_value: 40,
-    average_price: 4.25,
+    average_price: 5,
     win: {
       value: 20,
       total_price: 100,
@@ -56,7 +56,7 @@ export const fakedata = [
       address: '台南市歸仁區歸仁十三路2號',
     },
     bid_value: 40,
-    average_price: 4.25,
+    average_price: 5,
     win: {
       value: 20,
       total_price: 100,

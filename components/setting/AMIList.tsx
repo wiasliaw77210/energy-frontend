@@ -4,8 +4,8 @@ import { ConnectedAMI } from '../../typings/ConnectedAMI';
 import { AMIListItem } from './AMIListItem';
 
 const columConfig = [
-  { name: 'num', value: '電表編號', class: 'ami-item' },
-  { name: 'id', value: '電表名稱', class: 'ami-item-id' },
+  { name: 'num', value: '', class: 'ami-item' },
+  { name: 'id', value: '電表編號', class: 'ami-item-id' },
   { name: 'type', value: '種類', class: 'ami-item' },
 ];
 

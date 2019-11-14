@@ -10,27 +10,27 @@ const state = {
     帳號: 'ShalunC_BEMS',
     密碼: '************',
     地址: '台南市歸仁區高發二路360號C區',
-    以太坊地址: '0x8fBD8CB7DDEE6e1b0d7Ef...',
+    以太坊地址: '0x8fBD8CB7DDEE6e1b...',
   },
   AMIs: [
     {
       num: 1,
-      id: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ…',
+      id: '8b46ca3e-b22f-400b-a1b7-1864681ddcdf',
       type: PowerType.PV,
     },
     {
       num: 2,
-      id: 'Mtvs2Xl4GYEXCcMk4Us2xupO80PYeji…',
+      id: '7928223c-5275-48cf-b306-dd0286936866',
       type: PowerType.Homepage,
     },
     {
       num: 3,
-      id: 'AG8eyGzSMp8Bcu21QJd8JVtPQERZLXl…',
+      id: 'fe534d44-8b7c-4527-a1de-7b94b19302b8',
       type: PowerType.WT,
     },
     {
       num: 4,
-      id: 'H2s0Zqv4CLpHQ83ilB93UhDxvEtch8n…',
+      id: '1db5150f-899a-4628-92ae-b1eb51e2822d',
       type: PowerType.ESS,
     },
   ],
