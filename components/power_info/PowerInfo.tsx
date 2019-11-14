@@ -21,10 +21,12 @@ import styled from 'styled-components';
 
 const PowerInfoHeaders = {
   'Content-Type': 'application/json',
-  Authorization: 'Bearer ' + process.env.TOKEN,
+  Authorization:
+    'Bearer ' +
+    '3MaTIcta709SxWZ88OkaLjKvNzgfFkxqr8WemUjeOKLZcImscV6WcziuFyfrbXjc',
 };
 
-const url_powerinfo = process.env.HOST + '/power_info';
+const url_powerinfo = 'http://140.116.247.120:5000' + '/power_info';
 
 interface IPowerInfoData {
   id: string;
@@ -197,6 +199,7 @@ const PowerInfoTable: FunctionComponent = () => {
           <Line
             type="monotone"
             dataKey="Demand"
+            name="NetLoad"
             stroke="#1184ff"
             dot={false}
             connectNulls

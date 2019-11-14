@@ -5,10 +5,12 @@ import dayjs from 'dayjs';
 
 const BidSubmitHeaders = {
   'Content-Type': 'application/json',
-  Authorization: 'Bearer ' + process.env.TOKEN,
+  Authorization:
+    'Bearer ' +
+    '3MaTIcta709SxWZ88OkaLjKvNzgfFkxqr8WemUjeOKLZcImscV6WcziuFyfrbXjc',
 };
 
-const url_bidsubmit = process.env.HOST + '/bidsubmit';
+const url_bidsubmit = 'http://140.116.247.120:5000' + '/bidsubmit';
 
 interface IProps {
   bidding_type: string;
