@@ -137,7 +137,7 @@ export const initdata = {
   date: '--',
   time: '--',
   bid_type: '--',
-  status: 0,
+  status: -1,
   transaction_hash: null,
   upload: '-',
   counterpart: {
