@@ -7,10 +7,11 @@ import { PowerType } from '../typings/PowerType';
 
 const state = {
   UserInfos: {
-    帳號: 'ShalunC_BEMS',
-    密碼: '************',
-    地址: '台南市歸仁區高發二路360號C區',
-    以太坊地址: '0x8fBD8CB7DDEE6e1b...',
+    account: 'SGESC_C_BEMS',
+    password: '************',
+    address:
+      'C., No.2001, Section 1, Zhongzheng South Road, Guiren Dist., Tainan City 711, Taiwan (R.O.C.)',
+    eth_address: '0x8fBD8CB7DDEE6e1b...',
   },
   AMIs: [
     {
@@ -33,6 +34,11 @@ const state = {
       id: '1db5150f-899a-4628-92ae-b1eb51e2822d',
       type: PowerType.ESS,
     },
+    {
+      num: 5,
+      id: '3932154d-17af-4e09-8e38-6dc11f97a394',
+      type: PowerType.EV,
+    },
   ],
 };
 
@@ -45,7 +51,7 @@ const Block = styled.div`
 `;
 
 const Setting = () => (
-  <Page title="設定">
+  <Page title="Setting">
     <Block>
       <UserInfoList userInfos={state.UserInfos} />
       <AMIList amis={state.AMIs} />

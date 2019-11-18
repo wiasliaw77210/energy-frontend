@@ -36,13 +36,13 @@ interface IProps {
 }
 
 const StatusString = {
-  '0': '未得標',
-  '1': '投標中',
-  '2': '已投標',
-  '3': '得標',
-  '4': '執行中',
-  '5': '結算中',
-  '6': '已結算',
+  '0': 'Fail',
+  '1': 'Bidding',
+  '2': 'Bidden',
+  '3': 'Win',
+  '4': 'Trading',
+  '5': 'Settlement',
+  '6': 'Complete',
 };
 
 const FilterSelect = styled.a<{ isSelect: boolean }>`
@@ -84,37 +84,37 @@ const TableData: React.FC<IProps> = (props: IProps) => {
           isSelect={filter === EFilter.ALL ? true : false}
           onClick={() => setFilter(EFilter.ALL)}
         >
-          <span>全部</span>
+          <span>All</span>
         </FilterSelect>
         <FilterSelect
           isSelect={filter === EFilter.BIDDING ? true : false}
           onClick={() => setFilter(EFilter.BIDDING)}
         >
-          <span>競標</span>
+          <span>Bidden</span>
         </FilterSelect>
         <FilterSelect
           isSelect={filter === EFilter.PROCESS ? true : false}
           onClick={() => setFilter(EFilter.PROCESS)}
         >
-          <span>執行中</span>
+          <span>Trading</span>
         </FilterSelect>
         <FilterSelect
           isSelect={filter === EFilter.FINALLY ? true : false}
           onClick={() => setFilter(EFilter.FINALLY)}
         >
-          <span>結算</span>
+          <span>Settlement</span>
         </FilterSelect>
       </div>
       <div className="table">
         <div className="col caption">
           <span style={{ width: '20%' }}>{/*for block*/}</span>
-          <span style={{ width: '25%' }}>買/賣</span>
-          <span style={{ width: '40%' }}>狀態</span>
-          <span style={{ width: '40%' }}>進度</span>
-          <span style={{ width: '40%' }}>日期</span>
-          <span style={{ width: '40%' }}>投標時段</span>
-          <span style={{ width: '40%' }}>平均單價</span>
-          <span style={{ width: '40%' }}>連結</span>
+          <span style={{ width: '25%' }}>Bid Type</span>
+          <span style={{ width: '40%' }}>Status</span>
+          <span style={{ width: '40%' }}>Progress</span>
+          <span style={{ width: '40%' }}>Date</span>
+          <span style={{ width: '40%' }}>Period</span>
+          <span style={{ width: '40%' }}>Average Price</span>
+          <span style={{ width: '40%' }}>Link</span>
         </div>
         {props.data
           .filter(item => {
@@ -146,7 +146,7 @@ const TableData: React.FC<IProps> = (props: IProps) => {
                     color: item.bid_type === 'buy' ? '#d32f2f' : '#2e7d32',
                   }}
                 >
-                  {item.bid_type === 'buy' ? '買' : '賣'}
+                  {item.bid_type === 'buy' ? 'Buy' : 'Sell'}
                 </span>
               </span>
               <span style={{ width: '40%' }}>{StatusString[item.status]}</span>

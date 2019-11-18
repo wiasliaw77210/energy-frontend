@@ -39,7 +39,7 @@ const Field: ITableState = {
     },
     {
       field: 'date',
-      title: '日期',
+      title: 'Date',
       type: 'date',
       cellStyle: {
         textAlign: 'center',
@@ -49,7 +49,7 @@ const Field: ITableState = {
     },
     {
       field: 'time',
-      title: '時段',
+      title: 'Period',
       lookup: {
         0: '0:00-1:00',
         1: '1:00-2:00',
@@ -80,19 +80,19 @@ const Field: ITableState = {
     },
     {
       field: 'volume',
-      title: '度數',
+      title: 'kWh',
       cellStyle: { textAlign: 'center', width: '120px' },
       render: rowData => `${rowData.volume}kWh`,
     },
     {
       field: 'price',
-      title: '單價',
+      title: 'Unit Price',
       cellStyle: { textAlign: 'center', width: '120px' },
       render: rowData => `$${rowData.price}/kWh`,
     },
     {
       field: 'total_price',
-      title: '總金額',
+      title: 'Total Price',
       editable: 'never',
       cellStyle: { textAlign: 'center' },
     },
@@ -145,7 +145,7 @@ const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
   return (
     <BiddingMaterialTable color={bidding_type}>
       <MaterialTable
-        title={`${bidding_type === 'sell' ? '賣' : '買'}`}
+        title={`${bidding_type === 'sell' ? 'Sell' : 'Buy'}`}
         options={{
           actionsColumnIndex: -1,
           search: false,

@@ -43,7 +43,7 @@ const Nav: FunctionComponent = () => {
   }, []);
   return (
     <Navbar>
-      <H1>綠能交易平台</H1>
+      <H1>Energy Trading</H1>
       <UserInfo />
       <Navlinks />
       <TimeSpan>{timeString}</TimeSpan>

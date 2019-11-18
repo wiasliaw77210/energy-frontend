@@ -45,7 +45,7 @@ const Field: ITableState = {
   columns: [
     {
       field: 'date',
-      title: '日期',
+      title: 'Date',
       type: 'string',
       cellStyle: {
         textAlign: 'center',
@@ -53,7 +53,7 @@ const Field: ITableState = {
     },
     {
       field: 'time',
-      title: '紀錄時間',
+      title: 'Upload Time',
       type: 'string',
       cellStyle: {
         textAlign: 'center',
@@ -61,7 +61,7 @@ const Field: ITableState = {
     },
     {
       field: 'power_display',
-      title: '度數(kWh)',
+      title: 'kWh',
       type: 'string',
       cellStyle: {
         textAlign: 'center',
@@ -69,7 +69,7 @@ const Field: ITableState = {
     },
     {
       field: 'data_type',
-      title: '用產電種類',
+      title: 'Data Type',
       type: 'string',
       cellStyle: {
         textAlign: 'center',
@@ -77,7 +77,7 @@ const Field: ITableState = {
     },
     {
       field: 'address',
-      title: '連結',
+      title: 'Link',
       type: 'string',
       cellStyle: {
         textAlign: 'center',
@@ -181,7 +181,7 @@ const PowerInfoTable: FunctionComponent = () => {
           <XAxis
             dataKey="name"
             label={{
-              value: '日期',
+              value: 'datetime',
               position: 'insideBottomRight',
               offset: -10,
             }}
@@ -253,7 +253,7 @@ const PowerInfoTable: FunctionComponent = () => {
       </DatePicker>
       <BiddingMaterialTable>
         <MaterialTable
-          title={'電力資訊'}
+          title={'Electricity Records'}
           options={{
             search: false,
             headerStyle: {

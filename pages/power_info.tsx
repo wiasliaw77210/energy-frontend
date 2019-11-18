@@ -4,7 +4,7 @@ import Page from '../components/Page';
 import PowerInfoTable from '../components/power_info/PowerInfo';
 
 const PowerInfo = () => (
-  <Page title="電力資訊">
+  <Page title="Power Info">
     <PowerInfoTable />
   </Page>
 );

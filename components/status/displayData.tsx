@@ -52,8 +52,8 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
       </div>
       <div className="right">
         <div className="circlelist">
-          <Circle isSelect={props.data.status === 1}>投標中</Circle>
-          <Circle isSelect={props.data.status === 2}>已投標</Circle>
+          <Circle isSelect={props.data.status === 1}>Bidding</Circle>
+          <Circle isSelect={props.data.status === 2}>Bidden</Circle>
           <Circle
             isSelect={props.data.status === 3}
             style={
@@ -62,45 +62,48 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
                 : { borderColor: '#ebebeb' }
             }
           >
-            得標
-            <br />或<br />
-            未得標
+            Win
+            <br />
+            or
+            <br />
+            Fail
           </Circle>
-          <Circle isSelect={props.data.status === 4}>執行中</Circle>
-          <Circle isSelect={props.data.status === 5}>結算中</Circle>
-          <Circle isSelect={props.data.status === 6}>已結算</Circle>
+          <Circle isSelect={props.data.status === 4}>Trading</Circle>
+          <Circle isSelect={props.data.status === 5}>Settlement</Circle>
+          <Circle isSelect={props.data.status === 6}>Complete</Circle>
         </div>
         <div className="datalist">
           <div className="col">
             <span style={{ width: '50%', marginLeft: '30px' }}>
-              交易編號：{props.data.id}
+              Tx ID：{props.data.id}
             </span>
             <span style={{ width: '50%', marginLeft: '30px' }}>
-              上鏈時間：{!!props.data.upload ? props.data.upload : '--'}
+              Upload Time：{!!props.data.upload ? props.data.upload : '--'}
             </span>
           </div>
           <div className="col">
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              對象：
+              Counterpart：
               {!!props.data.counterpart ? props.data.counterpart.name : '--'}
             </span>
             <span style={{ width: '75%', marginLeft: '30px' }}>
-              地址：
+              Address：
               {!!props.data.counterpart ? props.data.counterpart.address : '--'}
             </span>
           </div>
           <div className="col">
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              投標度數：{props.data.bid_value}
+              Bid：{props.data.bid_value}
             </span>
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              得標度數：{!!props.data.win ? props.data.win.value : '0'}
+              Win：{!!props.data.win ? props.data.win.value : '0'}
             </span>
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              總金額：{!!props.data.win ? props.data.win.total_price : '0'}
+              Total Price：{!!props.data.win ? props.data.win.total_price : '0'}
             </span>
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              結算金額：{!!props.data.settlement ? props.data.settlement : '0'}
+              Settlement：
+              {!!props.data.settlement ? props.data.settlement : '0'}
             </span>
           </div>
         </div>

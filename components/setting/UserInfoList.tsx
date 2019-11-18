@@ -2,7 +2,7 @@ import React from 'react';
 import { EditUserIcon } from './EditUserIcon';
 import { UserInfoItem } from './UserInfoItem';
 
-const attributes = ['帳號', '密碼', '地址', '以太坊地址'];
+const attributes = ['account', 'password', 'address', 'eth_address'];
 
 interface IProps {
   userInfos: object;

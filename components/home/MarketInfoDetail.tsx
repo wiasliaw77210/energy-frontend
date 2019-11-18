@@ -41,7 +41,7 @@ const MarketInfoDetail: FunctionComponent<IDetail> = (props: IDetail) => {
     <InfoBlock>
       <span
         className="sub-title"
-        style={props.subTitle === '買' ? buyStyle : sellStyle}
+        style={props.subTitle === 'Buy' ? buyStyle : sellStyle}
       >
         {props.subTitle}
       </span>

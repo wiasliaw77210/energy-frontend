@@ -3,7 +3,7 @@ import Page from '../components/Page';
 import HomeContainer from '../components/home';
 
 const Home = () => (
-  <Page title="首頁">
+  <Page title="Home Page">
     <HomeContainer />
   </Page>
 );

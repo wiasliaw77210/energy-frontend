@@ -40,7 +40,7 @@ class UserInfo extends React.Component {
       <Container>
         <UserImg src="https://cdn2.iconfinder.com/data/icons/business-management-isometric-awesome-design/512/Office_Building-512.png" />
         <Item>
-          <span>沙崙綠能科學城C區BEMS</span>
+          <span>SGESC_C_BEMS</span>
         </Item>
         <Item>
           <img style={{ marginRight: 20 }} src="/static/nav/wallet_icon.png" />

@@ -10,7 +10,7 @@ const BidTable = styled.div`
 `;
 
 const Bidding = () => (
-  <Page title="投標">
+  <Page title="Bidding">
     <BidTable>
       <BiddingTable bidding_type={'buy'} />
       <BiddingTable bidding_type={'sell'} />

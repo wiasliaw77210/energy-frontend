@@ -13,7 +13,7 @@ const Block = styled.img`
 `;
 
 const GraphContainer: FunctionComponent = () => {
-  return <Block src={`/static/home/4_building_fps15.gif`} alt="building" />;
+  return <Block src={`/static/home/EngBgif_fps30.gif`} alt="building" />;
 };
 
 export default GraphContainer;

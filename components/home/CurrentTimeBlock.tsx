@@ -81,14 +81,14 @@ const CurrentTimeBlock: FunctionComponent = () => {
 
   return (
     <Block>
-      <Title>目前電力交易時間</Title>
+      <Title>Current Trading Hours</Title>
       <TimeContainer>
         <img src={`/static/home/green_b_icon.png`} alt="b_icon" />
         <Time>{hour + ' : 00 - ' + getNextTime() + ' : 00'}</Time>
       </TimeContainer>
       <MarketInfo>
-        <MarketInfoDetail subTitle={'買'} value={'40'} price={'5'} />
-        <MarketInfoDetail subTitle={'賣'} value={'20'} price={'5'} />
+        <MarketInfoDetail subTitle={'Buy'} value={'40'} price={'5'} />
+        <MarketInfoDetail subTitle={'Sell'} value={'20'} price={'5'} />
       </MarketInfo>
     </Block>
   );

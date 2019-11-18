@@ -5,8 +5,8 @@ import { AMIListItem } from './AMIListItem';
 
 const columConfig = [
   { name: 'num', value: '', class: 'ami-item' },
-  { name: 'id', value: '電表編號', class: 'ami-item-id' },
-  { name: 'type', value: '種類', class: 'ami-item' },
+  { name: 'id', value: 'AMI Identification', class: 'ami-item-id' },
+  { name: 'type', value: 'Type', class: 'ami-item' },
 ];
 
 interface IProps {
@@ -17,7 +17,7 @@ export const AMIList: React.FC<IProps> = ({ amis }) => (
   <>
     <ul className="list">
       <li className="sub-title" key="sub-title">
-        已連結電表
+        Connected AMI
       </li>
       <li className="tuple" key="attribute">
         {columConfig.map(v => (

@@ -48,28 +48,28 @@ const BiddingInfoContainer = styled.div`
 
 const testing_data = [
   {
-    date: '2019/11/14',
-    time: '10:00 - 11:00',
+    date: '2019/11/17',
+    time: '11:00 - 12:00',
     bid_type: 'buy',
     success: true,
     value: 20,
     price: 5,
   },
   {
-    date: '2019/11/14',
-    time: '10:00 - 11:00',
+    date: '2019/11/17',
+    time: '11:00 - 12:00',
     bid_type: 'buy',
     success: true,
     value: 20,
     price: 5,
   },
   {
-    date: '2019/11/14',
-    time: '10:00 - 11:00',
+    date: '2019/11/17',
+    time: '11:00 - 12:00',
     bid_type: 'sell',
     success: true,
     value: 20,
-    price: 5,
+    price: 6,
   },
   {
     date: '2019/11/13',
@@ -92,7 +92,7 @@ const testing_data = [
 const BiddingInfo: FunctionComponent = () => {
   return (
     <Block>
-      <Title>得標資訊</Title>
+      <Title>Bidding Informations</Title>
       <BiddingInfoContainer>
         <table>
           <tbody>
@@ -100,12 +100,10 @@ const BiddingInfo: FunctionComponent = () => {
               <tr key={index}>
                 <td>{data.date}</td>
                 <td>{data.time}</td>
-                <td>{`投標種類 : ${
-                  data.bid_type === 'sell' ? '賣' : '買'
-                }`}</td>
-                <td>{data.success ? '得標成功' : '未得標'}</td>
-                <td>{'得標度數 : ' + data.value + 'kWh'}</td>
-                <td>{'單價 : $' + data.price + '/kWh'}</td>
+                <td>{`${data.bid_type === 'sell' ? 'sell' : 'buy'}`}</td>
+                <td>{data.success ? 'Success' : 'Fail'}</td>
+                <td>{'bid : ' + data.value + 'kWh'}</td>
+                <td>{'$' + data.price + '/kWh'}</td>
               </tr>
             ))}
           </tbody>

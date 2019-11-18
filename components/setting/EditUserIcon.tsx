@@ -18,10 +18,10 @@ export const EditUserIcon: React.FC = () => (
         className="icon"
         src="https://cdn2.iconfinder.com/data/icons/business-management-isometric-awesome-design/512/Office_Building-512.png"
       />
-      <button>更改頭像</button>
+      <button>Change Avatar</button>
     </div>
 
-    <span>沙崙綠能科學城C區BEMS</span>
+    <span>SGESC_C_BEMS</span>
 
     <style jsx>{`
       .icon {

@@ -31,11 +31,11 @@ const Item = styled.div`
 `;
 
 const linkConfig = [
-  { name: '首頁', ref: '/', icon: 'home_icon' },
-  { name: '投標', ref: '/bidding', icon: 'b_icon' },
-  { name: '競標動態', ref: '/status', icon: 'bs_icon' },
-  { name: '電力資訊', ref: '/power_info', icon: 'flash_icon' },
-  { name: '設定', ref: '/setting', icon: 'setting_icon' },
+  { name: 'HomePage', ref: '/', icon: 'home_icon' },
+  { name: 'Bidding', ref: '/bidding', icon: 'b_icon' },
+  { name: 'BiddingStatus', ref: '/status', icon: 'bs_icon' },
+  { name: 'PowerInfo', ref: '/power_info', icon: 'flash_icon' },
+  { name: 'Setting', ref: '/setting', icon: 'setting_icon' },
 ];
 
 enum Color {
@@ -68,7 +68,7 @@ const Navlinks: FunctionComponent = () => {
       ))}
       <Item>
         <img src="/static/nav/white_icon/logout_icon.png" />
-        <a href="/">登出</a>
+        <a href="/">Logout</a>
       </Item>
     </Container>
   );

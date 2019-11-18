@@ -1,7 +1,7 @@
 export enum PowerType {
-  PV = '太陽能',
-  Homepage = '淨負載',
-  WT = '風能',
-  ESS = '儲能系統',
-  EV = '充電樁',
+  PV = 'Solar Energy',
+  Homepage = 'Net Load',
+  WT = 'Wind Power',
+  ESS = 'Energy Storage System',
+  EV = 'EV Charging Station',
 }
