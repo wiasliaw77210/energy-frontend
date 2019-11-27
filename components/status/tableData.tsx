@@ -133,6 +133,7 @@ const TableData: React.FC<IProps> = (props: IProps) => {
             <div
               className="col"
               key={index}
+              style={{ borderTop: index !== 0 ? 'solid 1px #f1f2f1' : '' }}
               onClick={() => {
                 setDisplayID(item.id);
                 props.handleSetData(item);
