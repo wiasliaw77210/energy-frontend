@@ -45,7 +45,13 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
   return (
     <div className="container">
       <div className="left">
-        <img src="/static/status/box_grey.png" />
+        <img
+          src={
+            props.data.achievement !== null
+              ? '/static/status/box_orange.png'
+              : '/static/status/box_grey.png'
+          }
+        />
         <span>
           {props.data.achievement !== null ? props.data.achievement : '--%'}
         </span>
