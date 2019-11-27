@@ -111,6 +111,8 @@ const Login: React.FC = () => {
         style={{
           backgroundImage: 'url(/static/login/login_pic.png)',
           float: 'left',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
         }}
       />
       <Block
