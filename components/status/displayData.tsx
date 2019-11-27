@@ -84,7 +84,9 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
               對象：
               {!!props.data.counterpart ? props.data.counterpart.name : '--'}
             </span>
-            <span style={{ width: '75%', marginLeft: '30px' }}>
+          </div>
+          <div className="col">
+            <span style={{ width: '100%', marginLeft: '30px' }}>
               地址：
               {!!props.data.counterpart ? props.data.counterpart.address : '--'}
             </span>
