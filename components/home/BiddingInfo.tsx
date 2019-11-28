@@ -100,9 +100,15 @@ const BiddingInfo: FunctionComponent = () => {
               <tr key={index}>
                 <td>{data.date}</td>
                 <td>{data.time}</td>
-                <td>{`投標種類 : ${
-                  data.bid_type === 'sell' ? '賣' : '買'
-                }`}</td>
+                <td
+                  style={
+                    data.bid_type === 'sell'
+                      ? { color: '#D32F2F' }
+                      : { color: '#2E7D32' }
+                  }
+                >
+                  {data.bid_type === 'sell' ? '賣' : '買'}
+                </td>
                 <td>{data.success ? '得標成功' : '未得標'}</td>
                 <td>{'得標度數 : ' + data.value + 'kWh'}</td>
                 <td>{'單價 : $' + data.price + '/kWh'}</td>
