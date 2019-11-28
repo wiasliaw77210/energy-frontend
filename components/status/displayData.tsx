@@ -62,11 +62,7 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
           <Circle isSelect={props.data.status === 2}>已投標</Circle>
           <Circle
             isSelect={props.data.status === 3}
-            style={
-              props.data.status === 0
-                ? { borderColor: '#757575' }
-                : { borderColor: '#ebebeb' }
-            }
+            style={props.data.status === 0 ? { borderColor: '#757575' } : {}}
           >
             得標
             <br />或<br />
