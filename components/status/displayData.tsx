@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { fontWeight } from '@material-ui/system';
 
 interface IData {
   id: string;
@@ -52,7 +53,8 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
               : '/static/status/box_grey.png'
           }
         />
-        <span>
+        <span style={{ fontSize: '20px', fontWeight: 'bold' }}>達成率</span>
+        <span style={{ fontSize: '70px' }}>
           {props.data.achievement !== null ? props.data.achievement : '--%'}
         </span>
       </div>
