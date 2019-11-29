@@ -10,7 +10,7 @@ const state = {
     帳號: 'ShalunC_BEMS',
     密碼: '************',
     地址: '台南市歸仁區高發二路360號C區',
-    以太坊地址: '0x8fBD8CB7DDEE6e1b...',
+    以太坊地址: '0xFE9181D3C196c163bECEC8aAe9250BCFE0C98F73',
   },
   AMIs: [
     {
@@ -39,7 +39,7 @@ const state = {
 const Block = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
 `;
