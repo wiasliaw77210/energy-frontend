@@ -130,15 +130,17 @@ const TableData: React.FC<IProps> = (props: IProps) => {
             }
           })
           .map((item, index) => (
-            <div className="col" key={index}>
+            <div
+              className="col"
+              key={index}
+              style={{ borderTop: index !== 0 ? 'solid 1px #f1f2f1' : '' }}
+              onClick={() => {
+                setDisplayID(item.id);
+                props.handleSetData(item);
+              }}
+            >
               <span style={{ width: '20%' }}>
-                <DisplaySelect
-                  isSelect={displayID === item.id}
-                  onClick={() => {
-                    setDisplayID(item.id);
-                    props.handleSetData(item);
-                  }}
-                />
+                <DisplaySelect isSelect={displayID === item.id} />
               </span>
               <span style={{ width: '25%' }}>
                 <span

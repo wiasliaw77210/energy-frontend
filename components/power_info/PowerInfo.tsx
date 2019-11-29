@@ -83,8 +83,16 @@ const Field: ITableState = {
         textAlign: 'center',
       },
       render: rowData => (
-        <a target="_blank" href={rowData.address}>
-          URL
+        <a
+          target="_blank"
+          href={rowData.address}
+          style={{
+            textDecoration: 'none',
+            color: '#ffa000',
+            pointerEvents: 'initial',
+          }}
+        >
+          {'< URL >'}
         </a>
       ),
     },

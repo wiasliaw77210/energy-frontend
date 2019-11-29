@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { fontWeight } from '@material-ui/system';
 
 interface IData {
   id: string;
@@ -45,8 +46,15 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
   return (
     <div className="container">
       <div className="left">
-        <img src="/static/status/box_grey.png" />
-        <span>
+        <img
+          src={
+            props.data.achievement !== null
+              ? '/static/status/box_orange.png'
+              : '/static/status/box_grey.png'
+          }
+        />
+        <span style={{ fontSize: '20px', fontWeight: 'bold' }}>達成率</span>
+        <span style={{ fontSize: '70px' }}>
           {props.data.achievement !== null ? props.data.achievement : '--%'}
         </span>
       </div>
@@ -56,11 +64,7 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
           <Circle isSelect={props.data.status === 2}>已投標</Circle>
           <Circle
             isSelect={props.data.status === 3}
-            style={
-              props.data.status === 0
-                ? { borderColor: '#757575' }
-                : { borderColor: '#ebebeb' }
-            }
+            style={props.data.status === 0 ? { borderColor: '#757575' } : {}}
           >
             得標
             <br />或<br />
@@ -84,7 +88,9 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
               對象：
               {!!props.data.counterpart ? props.data.counterpart.name : '--'}
             </span>
-            <span style={{ width: '75%', marginLeft: '30px' }}>
+          </div>
+          <div className="col">
+            <span style={{ width: '100%', marginLeft: '30px' }}>
               地址：
               {!!props.data.counterpart ? props.data.counterpart.address : '--'}
             </span>

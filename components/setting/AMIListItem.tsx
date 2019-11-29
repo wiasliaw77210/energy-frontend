@@ -26,7 +26,7 @@ export const AMIListItem: React.FC<IProps> = ({ ami }) => {
                   }
                   .ami-item-id {
                     width: 50%;
-                    text-align: left;
+                    text-align: center;
                     font: 20px/24px Regular Roboto;
                   }
             `}

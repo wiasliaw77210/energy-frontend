@@ -1,4 +1,5 @@
 import React from 'react';
+import { NONAME } from 'dns';
 
 interface IProps {
   name: string;
@@ -7,9 +8,34 @@ interface IProps {
 
 export const UserInfoItem: React.FC<IProps> = ({ name, value }) => (
   <>
-    <li className="user-item">
-      <span className="user-item-key">{name}:</span>
-      <span className="user-item-value">{value}</span>
+    <li
+      className="user-item"
+      style={name === '以太坊地址' ? { flexDirection: 'column' } : {}}
+    >
+      <span
+        className="user-item-key"
+        style={
+          name === '以太坊地址' ? { minWidth: '130px' } : { minWidth: '60px' }
+        }
+      >
+        {name}:
+      </span>
+      {name === '以太坊地址' ? (
+        <a
+          className="user-item-value"
+          target="_blank"
+          href={`https://etherscan.io/address/${value}`}
+          style={{
+            textDecoration: 'none',
+            color: '#ffa000',
+            cursor: 'pointer',
+          }}
+        >
+          {value}
+        </a>
+      ) : (
+        <span className="user-item-value">{value}</span>
+      )}
     </li>
     <style>
       {`
@@ -25,6 +51,7 @@ export const UserInfoItem: React.FC<IProps> = ({ name, value }) => (
                 font-family: Roboto;
                 font-size: 22px;
                 color: #707070;
+                align-self: start;
                 font-weight: bold;
             }
             .user-item-value{
@@ -32,7 +59,7 @@ export const UserInfoItem: React.FC<IProps> = ({ name, value }) => (
                 font-family: Roboto;
                 font-size: 20px;
                 color: #707070;
-                font-weight: bold;
+                word-break: break-all;
             }
         `}{' '}
     </style>
