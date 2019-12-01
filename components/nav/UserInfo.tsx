@@ -6,7 +6,15 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 25px;
+`;
+
+const UserImg = styled.img`
+  max-width: 200px;
+  width: calc(100% - 28px);
+  height: auto;
+  background-color: grey;
+  border-radius: 50%;
+  margin: 14px 0 14px 0;
 `;
 
 const Item = styled.div`
@@ -14,24 +22,17 @@ const Item = styled.div`
   justify-content: center;
   align-items: center;
   width: inherit;
-  margin-bottom: 28px;
 
   > span {
     font: 20px/24px Regular Roboto;
     letter-spacing: 0;
     color: #ffffff;
     opacity: 1;
+    margin: 14px 0 14px 0;
   }
   > img {
     margin: 10px;
   }
-`;
-const UserImg = styled.img`
-  width: 200px;
-  height: 200px;
-  background-color: grey;
-  border-radius: 50%;
-  margin: 28px;
 `;
 
 class UserInfo extends React.Component {
@@ -43,7 +44,10 @@ class UserInfo extends React.Component {
           <span>沙崙綠能科學城C區BEMS</span>
         </Item>
         <Item>
-          <img style={{ marginRight: 20 }} src="/static/nav/wallet_icon.png" />
+          <img
+            style={{ margin: '14px 20px 14px 10px' }}
+            src="/static/nav/wallet_icon.png"
+          />
           <span style={{ font: '22px/25px Regular Roboto' }}>$ 1000.00</span>
         </Item>
       </Container>
