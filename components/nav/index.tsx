@@ -36,7 +36,7 @@ const Flexbox = styled.div`
   flex-direction: column;
 `;
 const Resize = styled.div`
-  height: 60px;
+  height: 3rem;
 `;
 
 const Nav: React.FC = () => {
