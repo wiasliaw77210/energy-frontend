@@ -1,11 +1,11 @@
 import React from 'react';
-import Page from '../components/Page';
+import Layout from '../layout/layout';
 import StatusIndex from '../components/status';
 
 const Status = () => (
-  <Page title="競標動態">
+  <Layout title="競標動態">
     <StatusIndex />
-  </Page>
+  </Layout>
 );
 
 export default Status;
