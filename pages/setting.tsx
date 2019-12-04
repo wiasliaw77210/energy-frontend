@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from '../components/Page';
+import Layout from '../layout/layout';
 import styled from 'styled-components';
 import { AMIList } from '../components/setting/AMIList';
 import { UserInfoList } from '../components/setting/UserInfoList';
@@ -45,12 +45,12 @@ const Block = styled.div`
 `;
 
 const Setting = () => (
-  <Page title="設定">
+  <Layout title="設定">
     <Block>
       <UserInfoList userInfos={state.UserInfos} />
       <AMIList amis={state.AMIs} />
     </Block>
-  </Page>
+  </Layout>
 );
 
 export default Setting;

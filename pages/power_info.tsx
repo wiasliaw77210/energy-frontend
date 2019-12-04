@@ -1,12 +1,12 @@
 import React from 'react';
-import Page from '../components/Page';
+import Layout from '../layout/layout';
 
 import PowerInfoTable from '../components/power_info/PowerInfo';
 
 const PowerInfo = () => (
-  <Page title="電力資訊">
+  <Layout title="電力資訊">
     <PowerInfoTable />
-  </Page>
+  </Layout>
 );
 
 export default PowerInfo;

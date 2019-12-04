@@ -13,7 +13,7 @@ const Item = styled.div`
   justify-content: center;
   align-items: center;
   width: inherit;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 
   > a {
     font-size: 20px;

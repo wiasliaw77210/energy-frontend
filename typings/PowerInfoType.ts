@@ -6,7 +6,7 @@ export enum PowerType {
   EV = '充電樁',
 }
 
-export interface PowerInfoData {
+export interface IPowerInfoData {
   date: string;
   time: string;
   usage: string;

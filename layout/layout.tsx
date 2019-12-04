@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Nav from './nav';
+import Navbar from '../components/navbar';
 
 type TProps = {
   title: string;
@@ -24,7 +24,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="container">
-        <Nav />
+        <Navbar />
         <div className="main">
           <h1 className="title">{title}</h1>
           <div className="content">{children}</div>

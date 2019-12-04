@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Page from '../components/Page';
+import Layout from '../layout/layout';
 import BiddingTable from '../components/bidding/BidSubmit';
 
 const BidTable = styled.div`
@@ -10,12 +10,12 @@ const BidTable = styled.div`
 `;
 
 const Bidding = () => (
-  <Page title="投標">
+  <Layout title="投標">
     <BidTable>
       <BiddingTable bidding_type={'buy'} />
       <BiddingTable bidding_type={'sell'} />
     </BidTable>
-  </Page>
+  </Layout>
 );
 
 export default Bidding;
