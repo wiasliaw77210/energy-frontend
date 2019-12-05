@@ -25,5 +25,15 @@
     "currentTimeBlock": {
       "title": "目前電力交易時間"
     }
+  },
+  "bidding": {
+    "title": "投標",
+    "tableColumn": {
+      "date": "日期",
+      "period": "時段",
+      "power": "度數",
+      "unitPrice": "單價",
+      "totlePrice": "總金額"
+    }
   }
 }

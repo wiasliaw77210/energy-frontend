@@ -25,5 +25,15 @@
     "currentTimeBlock": {
       "title": "Current Trading Hours"
     }
+  },
+  "bidding": {
+    "title": "Bidding",
+    "tableColumn": {
+      "date": "Date",
+      "period": "Period",
+      "power": "kWh",
+      "unitPrice": "Unit Price",
+      "totlePrice": "Totle Price"
+    }
   }
 }
