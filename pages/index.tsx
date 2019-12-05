@@ -1,11 +1,16 @@
 import React from 'react';
 import Layout from '../layout/layout';
 import HomeContainer from '../components/home';
+import { Translation } from 'react-i18next';
 
 const Home = () => (
-  <Layout title="首頁">
-    <HomeContainer />
-  </Layout>
+  <Translation>
+    {t => (
+      <Layout title={t('home.title')}>
+        <HomeContainer />
+      </Layout>
+    )}
+  </Translation>
 );
 
 export default Home;

@@ -1,4 +1,6 @@
 {
+  "buy": "買",
+  "sell": "賣",
   "navbar": {
     "title": "綠能交易平台",
     "userName": "沙崙綠能科學城C區BEMS",
@@ -10,5 +12,18 @@
       "setting": "設定"
     },
     "logout": "登出"
+  },
+  "home": {
+    "title": "首頁",
+    "biddingInfo": {
+      "title": "得標資訊",
+      "success": "得標成功",
+      "fail": "得標失敗",
+      "bidAmount": "得標度數",
+      "unitPrice": "單價 : "
+    },
+    "currentTimeBlock": {
+      "title": "目前電力交易時間"
+    }
   }
 }

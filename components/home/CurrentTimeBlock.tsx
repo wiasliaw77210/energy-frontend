@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import MarketInfoDetail from './MarketInfoDetail';
+import { useTranslation } from 'react-i18next';
 
 const getCurrentTime = () => dayjs().format('HH');
 const getNextTime = () =>
@@ -69,6 +70,7 @@ const MarketInfo = styled.div`
 `;
 
 const CurrentTimeBlock: FunctionComponent = () => {
+  const { t } = useTranslation();
   const [hour, setHour] = useState(getCurrentTime());
   useEffect(() => {
     const timer = setInterval(() => {
@@ -81,14 +83,14 @@ const CurrentTimeBlock: FunctionComponent = () => {
 
   return (
     <Block>
-      <Title>目前電力交易時間</Title>
+      <Title>{t('home.currentTimeBlock.title')}</Title>
       <TimeContainer>
         <img src={`/static/home/green_b_icon.png`} alt="b_icon" />
         <Time>{hour + ' : 00 - ' + getNextTime() + ' : 00'}</Time>
       </TimeContainer>
       <MarketInfo>
-        <MarketInfoDetail subTitle={'買'} value={'40'} price={'5'} />
-        <MarketInfoDetail subTitle={'賣'} value={'20'} price={'5'} />
+        <MarketInfoDetail subTitle={t('buy')} value={'40'} price={'5'} />
+        <MarketInfoDetail subTitle={t('sell')} value={'20'} price={'5'} />
       </MarketInfo>
     </Block>
   );

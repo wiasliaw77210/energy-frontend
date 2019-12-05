@@ -1,6 +1,8 @@
 {
+  "buy": "buy",
+  "sell": "sell",
   "navbar": {
-    "title": "Energy Trading",
+    "title": "Energy Trading Platform",
     "userName": "SGESC_C_BEMS",
     "page": {
       "home": "HomePage",
@@ -10,5 +12,18 @@
       "setting": "Setting"
     },
     "logout": "Logout"
+  },
+  "home": {
+    "title": "Home Page",
+    "biddingInfo": {
+      "title": "Bidding Informations",
+      "success": "Success",
+      "fail": "Fail",
+      "bidAmount": "bid",
+      "unitPrice": ""
+    },
+    "currentTimeBlock": {
+      "title": "Current Trading Hours"
+    }
   }
 }
