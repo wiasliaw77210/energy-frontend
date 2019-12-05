@@ -1,1 +1,14 @@
-{}
+{
+  "navbar": {
+    "title": "Energy Trading",
+    "userName": "SGESC_C_BEMS",
+    "page": {
+      "home": "HomePage",
+      "bidding": "Bidding",
+      "status": "BiddingStatus",
+      "powerInfo": "PowerInfo",
+      "setting": "Setting"
+    },
+    "logout": "Logout"
+  }
+}

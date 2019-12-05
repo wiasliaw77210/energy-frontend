@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import dayjs from 'dayjs';
 import UserInfo from './UserInfo';
 import Navlinks from './Navlinks';
+import { useTranslation } from 'react-i18next';
 
 const getCurrentTime = () => dayjs().format('YYYY/MM/DD HH:mm');
 
@@ -40,6 +41,7 @@ const Resize = styled.div`
 `;
 
 const Nav: React.FC = () => {
+  const { t } = useTranslation();
   const [timeString, setTime] = useState(getCurrentTime());
   useEffect(() => {
     const timer = setInterval(() => {
@@ -51,7 +53,7 @@ const Nav: React.FC = () => {
   }, []);
   return (
     <Navbar>
-      <H1>綠能交易平台</H1>
+      <H1>{t('navbar.title')}</H1>
       <Flexbox>
         <UserInfo />
         <Resize />

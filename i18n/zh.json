@@ -1,1 +1,14 @@
-{}
+{
+  "navbar": {
+    "title": "綠能交易平台",
+    "userName": "沙崙綠能科學城C區BEMS",
+    "page": {
+      "home": "首頁",
+      "bidding": "投標",
+      "status": "競標動態",
+      "powerInfo": "電力資訊",
+      "setting": "設定"
+    },
+    "logout": "登出"
+  }
+}
