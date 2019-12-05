@@ -31,7 +31,7 @@ const TimeSpan = styled.span`
 `;
 const Flexbox = styled.div`
   display: flex;
-  jusitfy-content: center;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
