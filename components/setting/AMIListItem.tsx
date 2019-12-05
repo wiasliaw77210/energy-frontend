@@ -1,8 +1,8 @@
 import React from 'react';
-import { ConnectedAMI } from '../../typings/ConnectedAMI';
+import { IConnectedAMI } from '../../typings/ConnectedAMI';
 
 interface IProps {
-  ami: ConnectedAMI;
+  ami: IConnectedAMI;
 }
 
 export const AMIListItem: React.FC<IProps> = ({ ami }) => {

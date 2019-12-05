@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ConnectedAMI } from '../../typings/ConnectedAMI';
+import { IConnectedAMI } from '../../typings/ConnectedAMI';
 import { AMIListItem } from './AMIListItem';
 
 const columConfig = [
@@ -10,7 +10,7 @@ const columConfig = [
 ];
 
 interface IProps {
-  amis: ConnectedAMI[];
+  amis: IConnectedAMI[];
 }
 
 export const AMIList: React.FC<IProps> = ({ amis }) => (
