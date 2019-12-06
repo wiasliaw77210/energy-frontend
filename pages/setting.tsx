@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { AMIList } from '../components/setting/AMIList';
 import { UserInfoList } from '../components/setting/UserInfoList';
 import { PowerType } from '../typings/PowerType';
+import { Translation } from 'react-i18next';
 
 const state = {
   UserInfos: {
@@ -11,6 +12,10 @@ const state = {
     密碼: '************',
     地址: '台南市歸仁區高發二路360號C區',
     以太坊地址: '0xFE9181D3C196c163bECEC8aAe9250BCFE0C98F73',
+    account: 'ShalunC_BEMS',
+    password: '************',
+    address: '台南市歸仁區高發二路360號C區',
+    eth_address: '0xFE9181D3C196c163bECEC8aAe9250BCFE0C98F73',
   },
   AMIs: [
     {
@@ -45,12 +50,16 @@ const Block = styled.div`
 `;
 
 const Setting = () => (
-  <Layout title="設定">
-    <Block>
-      <UserInfoList userInfos={state.UserInfos} />
-      <AMIList amis={state.AMIs} />
-    </Block>
-  </Layout>
+  <Translation>
+    {t => (
+      <Layout title={t('setting.title')}>
+        <Block>
+          <UserInfoList userInfos={state.UserInfos} />
+          <AMIList amis={state.AMIs} />
+        </Block>
+      </Layout>
+    )}
+  </Translation>
 );
 
 export default Setting;

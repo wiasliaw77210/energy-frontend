@@ -1,5 +1,4 @@
 import React from 'react';
-import { NONAME } from 'dns';
 
 interface IProps {
   name: string;
@@ -10,17 +9,23 @@ export const UserInfoItem: React.FC<IProps> = ({ name, value }) => (
   <>
     <li
       className="user-item"
-      style={name === '以太坊地址' ? { flexDirection: 'column' } : {}}
+      style={
+        name === '以太坊地址' || name === 'eth_address'
+          ? { flexDirection: 'column' }
+          : {}
+      }
     >
       <span
         className="user-item-key"
         style={
-          name === '以太坊地址' ? { minWidth: '130px' } : { minWidth: '60px' }
+          name === '以太坊地址' || name === 'eth_address'
+            ? { minWidth: '130px' }
+            : { minWidth: '60px' }
         }
       >
         {name}:
       </span>
-      {name === '以太坊地址' ? (
+      {name === '以太坊地址' || name === 'eth_address' ? (
         <a
           className="user-item-value"
           target="_blank"

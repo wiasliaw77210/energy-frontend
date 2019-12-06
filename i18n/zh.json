@@ -1,6 +1,13 @@
 {
   "buy": "買",
   "sell": "賣",
+  "powerType": {
+    "PV": "太陽能",
+    "Homepage": "淨負載",
+    "WT": "風能",
+    "ESS": "儲能系統",
+    "EV": "充電樁"
+  },
   "navbar": {
     "title": "綠能交易平台",
     "userName": "沙崙綠能科學城C區BEMS",
@@ -39,5 +46,25 @@
   "powerInfo": {
     "title": "電力資訊",
     "datatime": "日期"
+  },
+  "setting": {
+    "title": "設定",
+    "userAttributes": {
+      "account": "帳號",
+      "password": "密碼",
+      "address": "地址",
+      "ethAddress": "以太坊地址"
+    },
+    "editIcon": {
+      "hint": "更改頭像",
+      "name": "沙崙綠能科學城C區BEMS"
+    },
+    "AMIList": {
+      "title": "已連結電表",
+      "column": {
+        "id": "電表編號",
+        "type": "種類"
+      }
+    }
   }
 }

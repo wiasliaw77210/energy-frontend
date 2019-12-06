@@ -1,6 +1,13 @@
 {
   "buy": "buy",
   "sell": "sell",
+  "powerType": {
+    "PV": "Solar Energy",
+    "Homepage": "Net Load",
+    "WT": "Wind Power",
+    "ESS": "Energy Storage System",
+    "EV": "EV Charging Station"
+  },
   "navbar": {
     "title": "Energy Trading Platform",
     "userName": "SGESC_C_BEMS",
@@ -39,5 +46,25 @@
   "powerInfo": {
     "title": "Power Info",
     "datatime": "datatime"
+  },
+  "setting": {
+    "title": "Setting",
+    "userAttributes": {
+      "account": "account",
+      "password": "password",
+      "address": "address",
+      "ethAddress": "eth_address"
+    },
+    "editIcon": {
+      "hint": "Change Avatar",
+      "name": "SGESC_C_BEMS"
+    },
+    "AMIList": {
+      "title": "Connected AMI",
+      "column": {
+        "id": "AMI Identification",
+        "type": "Type"
+      }
+    }
   }
 }
