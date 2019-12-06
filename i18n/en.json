@@ -35,5 +35,9 @@
       "unitPrice": "Unit Price",
       "totlePrice": "Totle Price"
     }
+  },
+  "powerInfo": {
+    "title": "Power Info",
+    "datatime": "datatime"
   }
 }

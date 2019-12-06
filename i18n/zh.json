@@ -35,5 +35,9 @@
       "unitPrice": "單價",
       "totlePrice": "總金額"
     }
+  },
+  "powerInfo": {
+    "title": "電力資訊",
+    "datatime": "日期"
   }
 }

@@ -18,6 +18,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const PowerInfoHeaders = {
   'Content-Type': 'application/json',
@@ -150,6 +151,7 @@ const BiddingMaterialTable = styled.div`
 `;
 
 const PowerInfoTable: FunctionComponent = () => {
+  const { t } = useTranslation();
   const [state] = React.useState<ITableState>(Field);
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     new Date(dayjs().format('YYYY/MM/DD')),
@@ -261,7 +263,7 @@ const PowerInfoTable: FunctionComponent = () => {
       </DatePicker>
       <BiddingMaterialTable>
         <MaterialTable
-          title={'電力資訊'}
+          title={t('powerInfo.title')}
           options={{
             search: false,
             headerStyle: {
