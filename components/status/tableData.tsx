@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 enum EFilter {
   ALL,
@@ -35,16 +36,6 @@ interface IProps {
   handleSetData: (data: any) => void;
 }
 
-const StatusString = {
-  '0': '未得標',
-  '1': '投標中',
-  '2': '已投標',
-  '3': '得標',
-  '4': '執行中',
-  '5': '結算中',
-  '6': '已結算',
-};
-
 const FilterSelect = styled.a<{ isSelect: boolean }>`
   width: 25%;
   height: 44px;
@@ -74,8 +65,19 @@ const TxLink = styled.a<{ disabled: boolean }>`
 `;
 
 const TableData: React.FC<IProps> = (props: IProps) => {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState<EFilter>(EFilter.ALL);
   const [displayID, setDisplayID] = useState<string>('');
+
+  const StatusString = {
+    '0': t('status.table.status0'),
+    '1': t('status.table.status1'),
+    '2': t('status.table.status2'),
+    '3': t('status.table.status3'),
+    '4': t('status.table.status4'),
+    '5': t('status.table.status5'),
+    '6': t('status.table.status6'),
+  };
 
   return (
     <div className="container">
@@ -84,37 +86,37 @@ const TableData: React.FC<IProps> = (props: IProps) => {
           isSelect={filter === EFilter.ALL ? true : false}
           onClick={() => setFilter(EFilter.ALL)}
         >
-          <span>全部</span>
+          <span>{t('status.table.pageAll')}</span>
         </FilterSelect>
         <FilterSelect
           isSelect={filter === EFilter.BIDDING ? true : false}
           onClick={() => setFilter(EFilter.BIDDING)}
         >
-          <span>競標</span>
+          <span>{t('status.table.pageBidden')}</span>
         </FilterSelect>
         <FilterSelect
           isSelect={filter === EFilter.PROCESS ? true : false}
           onClick={() => setFilter(EFilter.PROCESS)}
         >
-          <span>執行中</span>
+          <span>{t('status.table.pageTrading')}</span>
         </FilterSelect>
         <FilterSelect
           isSelect={filter === EFilter.FINALLY ? true : false}
           onClick={() => setFilter(EFilter.FINALLY)}
         >
-          <span>結算</span>
+          <span>{t('status.table.pageSettlement')}</span>
         </FilterSelect>
       </div>
       <div className="table">
         <div className="col caption">
           <span style={{ width: '20%' }}>{/*for block*/}</span>
-          <span style={{ width: '25%' }}>買/賣</span>
-          <span style={{ width: '40%' }}>狀態</span>
-          <span style={{ width: '40%' }}>進度</span>
-          <span style={{ width: '40%' }}>日期</span>
-          <span style={{ width: '40%' }}>投標時段</span>
-          <span style={{ width: '40%' }}>平均單價</span>
-          <span style={{ width: '40%' }}>連結</span>
+          <span style={{ width: '25%' }}>{t('status.table.colBidType')}</span>
+          <span style={{ width: '40%' }}>{t('status.table.colStatus')}</span>
+          <span style={{ width: '40%' }}>{t('status.table.colProgress')}</span>
+          <span style={{ width: '40%' }}>{t('status.table.colDate')}</span>
+          <span style={{ width: '40%' }}>{t('status.table.colPeriod')}</span>
+          <span style={{ width: '40%' }}>{t('status.table.colAvgPrice')}</span>
+          <span style={{ width: '40%' }}>{t('status.table.colLink')}</span>
         </div>
         {props.data
           .filter(item => {
@@ -148,7 +150,7 @@ const TableData: React.FC<IProps> = (props: IProps) => {
                     color: item.bid_type === 'buy' ? '#d32f2f' : '#2e7d32',
                   }}
                 >
-                  {item.bid_type === 'buy' ? '買' : '賣'}
+                  {item.bid_type === 'buy' ? t('buy') : t('sell')}
                 </span>
               </span>
               <span style={{ width: '40%' }}>{StatusString[item.status]}</span>

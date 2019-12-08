@@ -66,5 +66,47 @@
         "type": "種類"
       }
     }
+  },
+  "status": {
+    "title": "競標動態",
+    "display": {
+      "achievement": "達成率",
+      "bidding": "投標中",
+      "bidden": "已投標",
+      "win": "得標",
+      "or": "或",
+      "fail": "未得標",
+      "trading": "執行中",
+      "settlemant": "結算中",
+      "complete": "已結算",
+      "txId": "交易編號",
+      "uploadTime": "上鏈時間",
+      "counterpart": "對象",
+      "address": "地址",
+      "bidAmount": "投標度數",
+      "winAmount": "得標度數",
+      "totalPrice": "總金額",
+      "settlementPrice": "結算金額"
+    },
+    "table": {
+      "status0": "未得標",
+      "status1": "投標中",
+      "status2": "已投標",
+      "status3": "得標",
+      "status4": "執行中",
+      "status5": "結算中",
+      "status6": "已結算",
+      "pageAll": "全部",
+      "pageBidden": "競標",
+      "pageTrading": "執行中",
+      "pageSettlement": "結算",
+      "colBidType": "買/賣",
+      "colStatus": "狀態",
+      "colProgress": "進度",
+      "colDate": "日期",
+      "colPeriod": "投標時段",
+      "colAvgPrice": "平均單價",
+      "colLink": "連結"
+    }
   }
 }
