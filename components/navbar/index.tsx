@@ -21,6 +21,7 @@ const H1 = styled.div`
   font-size: 30px;
   color: #fff;
   margin-top: 23px;
+  text-align: center;
 `;
 
 const TimeSpan = styled.span`
