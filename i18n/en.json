@@ -108,5 +108,13 @@
       "colAvgPrice": "Average Price",
       "colLink": "Link"
     }
+  },
+  "login": {
+    "title": "Energy Trading Platform",
+    "account": "Account",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forget": "Forget password?",
+    "login": "LOGIN"
   }
 }

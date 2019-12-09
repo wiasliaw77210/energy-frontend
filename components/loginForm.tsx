@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
+import '../i18n';
 
 const Block = styled.div`
   width: 50%;
@@ -61,6 +63,7 @@ const SpanSelect = styled.span<{ isClick: boolean }>`
 `;
 
 const Login: React.FC = () => {
+  const { t } = useTranslation();
   const [isRemem, setRemem] = useState(false);
   const [loginInfo, setLoginInfo] = useState({ account: '', password: '' });
   const [userData, setUserData] = useState<any>({ user_id: '', bearer: '' });
@@ -124,16 +127,16 @@ const Login: React.FC = () => {
         <Form onSubmit={handleSubmit}>
           <img src="/static/login/login_logo.png" />
           <DivCenter>
-            <span>帳號</span>
+            <span>{t('login.account')}</span>
             <input type="text" id="account" onChange={handleAccount} />
-            <span>密碼</span>
+            <span>{t('login.password')}</span>
             <input type="password" id="password" onChange={handlePassword} />
             <DivList onClick={() => setRemem(!isRemem)}>
-              <SpanSelect isClick={isRemem}>記住我</SpanSelect>
-              <span className="list">忘記密碼？</span>
+              <SpanSelect isClick={isRemem}>{t('login.rememberMe')}</SpanSelect>
+              <span className="list">{t('login.forget')}</span>
             </DivList>
           </DivCenter>
-          <Button type="submit">登入</Button>
+          <Button type="submit">{t('login.login')}</Button>
         </Form>
         <style jsx>{`
           input {

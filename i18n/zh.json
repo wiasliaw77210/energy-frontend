@@ -108,5 +108,13 @@
       "colAvgPrice": "平均單價",
       "colLink": "連結"
     }
+  },
+  "login": {
+    "title": "綠能交易平台",
+    "account": "帳號",
+    "password": "密碼",
+    "rememberMe": "記住我",
+    "forget": "忘記密碼？",
+    "login": "登入"
   }
 }
