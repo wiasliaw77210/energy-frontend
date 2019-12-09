@@ -3,7 +3,7 @@ import Layout from '../layout/layout';
 import styled from 'styled-components';
 import { AMIList } from '../components/setting/AMIList';
 import { UserInfoList } from '../components/setting/UserInfoList';
-import { PowerType } from '../typings/PowerType';
+import { PowerType } from '../constants';
 
 const state = {
   UserInfos: {
