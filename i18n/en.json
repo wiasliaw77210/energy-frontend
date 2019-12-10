@@ -12,10 +12,10 @@
     "title": "Energy Trading Platform",
     "userName": "SGESC_C_BEMS",
     "page": {
-      "home": "HomePage",
+      "home": "Home",
       "bidding": "Bidding",
-      "status": "BiddingStatus",
-      "powerInfo": "PowerInfo",
+      "status": "Bidding Status",
+      "powerInfo": "Power Information",
       "setting": "Setting"
     },
     "logout": "Logout"
