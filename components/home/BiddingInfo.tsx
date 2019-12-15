@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const Block = styled.div`
   width: calc(50% - 13px);
@@ -90,9 +91,11 @@ const testing_data = [
 ];
 
 const BiddingInfo: FunctionComponent = () => {
+  const { t } = useTranslation();
+
   return (
     <Block>
-      <Title>得標資訊</Title>
+      <Title>{t('home.biddingInfo.title')}</Title>
       <BiddingInfoContainer>
         <table>
           <tbody>
@@ -107,11 +110,19 @@ const BiddingInfo: FunctionComponent = () => {
                       : { color: '#2E7D32' }
                   }
                 >
-                  {data.bid_type === 'sell' ? '賣' : '買'}
+                  {data.bid_type === 'sell' ? t('sell') : t('buy')}
                 </td>
-                <td>{data.success ? '得標成功' : '未得標'}</td>
-                <td>{'得標度數 : ' + data.value + 'kWh'}</td>
-                <td>{'單價 : $' + data.price + '/kWh'}</td>
+                <td>
+                  {data.success
+                    ? t('home.biddingInfo.success')
+                    : t('home.biddingInfo.fail')}
+                </td>
+                <td>
+                  {t('home.biddingInfo.bidAmount') + ' : ' + data.value + 'kWh'}
+                </td>
+                <td>
+                  {t('home.biddingInfo.unitPrice') + '$' + data.price + '/kWh'}
+                </td>
               </tr>
             ))}
           </tbody>

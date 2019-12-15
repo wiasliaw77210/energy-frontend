@@ -2,6 +2,7 @@ import React, { FunctionComponent, forwardRef, useEffect } from 'react';
 import MaterialTable, { Column } from 'material-table';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 
 const BidSubmitHeaders = {
   'Content-Type': 'application/json',
@@ -141,11 +142,12 @@ const BiddingMaterialTable = styled.div`
 `;
 
 const BiddingTable: React.FC<IProps> = ({ bidding_type }) => {
+  const { t } = useTranslation();
   const [state] = React.useState<ITableState>(Field);
   return (
     <BiddingMaterialTable color={bidding_type}>
       <MaterialTable
-        title={`${bidding_type === 'sell' ? '賣' : '買'}`}
+        title={`${bidding_type === 'sell' ? t('sell') : t('buy')}`}
         options={{
           actionsColumnIndex: -1,
           search: false,

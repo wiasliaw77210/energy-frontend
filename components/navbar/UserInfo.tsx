@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Translation } from 'react-i18next';
 
 const Container = styled.div`
   display: flex;
@@ -41,7 +42,7 @@ class UserInfo extends React.Component {
       <Container>
         <UserImg src="https://cdn2.iconfinder.com/data/icons/business-management-isometric-awesome-design/512/Office_Building-512.png" />
         <Item>
-          <span>沙崙綠能科學城C區BEMS</span>
+          <Translation>{t => <span>{t('navbar.userName')}</span>}</Translation>
         </Item>
         <Item>
           <img

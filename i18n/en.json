@@ -1,0 +1,120 @@
+{
+  "buy": "buy",
+  "sell": "sell",
+  "powerType": {
+    "PV": "Solar Energy",
+    "Homepage": "Net Load",
+    "WT": "Wind Power",
+    "ESS": "Energy Storage System",
+    "EV": "EV Charging Station"
+  },
+  "navbar": {
+    "title": "Energy Trading Platform",
+    "userName": "SGESC_C_BEMS",
+    "page": {
+      "home": "Home",
+      "bidding": "Bidding",
+      "status": "Bidding Status",
+      "powerInfo": "Power Information",
+      "setting": "Setting"
+    },
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "Home Page",
+    "biddingInfo": {
+      "title": "Bidding Informations",
+      "success": "Success",
+      "fail": "Fail",
+      "bidAmount": "bid",
+      "unitPrice": ""
+    },
+    "currentTimeBlock": {
+      "title": "Current Trading Hours"
+    }
+  },
+  "bidding": {
+    "title": "Bidding",
+    "tableColumn": {
+      "date": "Date",
+      "period": "Period",
+      "power": "kWh",
+      "unitPrice": "Unit Price",
+      "totlePrice": "Totle Price"
+    }
+  },
+  "powerInfo": {
+    "title": "Power Info",
+    "datatime": "datatime"
+  },
+  "setting": {
+    "title": "Setting",
+    "userAttributes": {
+      "account": "account",
+      "password": "password",
+      "address": "address",
+      "ethAddress": "eth_address"
+    },
+    "editIcon": {
+      "hint": "Change Avatar",
+      "name": "SGESC_C_BEMS"
+    },
+    "AMIList": {
+      "title": "Connected AMI",
+      "column": {
+        "id": "AMI Identification",
+        "type": "Type"
+      }
+    }
+  },
+  "status": {
+    "title": "Bidding Status",
+    "display": {
+      "achievement": "Achievement",
+      "bidding": "Bidding",
+      "bidden": "Bidden",
+      "win": "Win",
+      "or": "or",
+      "fail": "Fail",
+      "trading": "Trading",
+      "settlemant": "Settlement",
+      "complete": "Complete",
+      "txId": "Tx ID",
+      "uploadTime": "Upload Time",
+      "counterpart": "Counterpart",
+      "address": "Address",
+      "bidAmount": "Bid",
+      "winAmount": "Win",
+      "totalPrice": "Total Price",
+      "settlementPrice": "Settlement"
+    },
+    "table": {
+      "status0": "Fail",
+      "status1": "Bidding",
+      "status2": "Bidden",
+      "status3": "Win",
+      "status4": "Trading",
+      "status5": "Settlement",
+      "status6": "Complete",
+      "pageAll": "All",
+      "pageBidden": "Bidden",
+      "pageTrading": "Trading",
+      "pageSettlement": "Settlement",
+      "colBidType": "Bid Type",
+      "colStatus": "Status",
+      "colProgress": "Progress",
+      "colDate": "Date",
+      "colPeriod": "Period",
+      "colAvgPrice": "Average Price",
+      "colLink": "Link"
+    }
+  },
+  "login": {
+    "title": "Energy Trading Platform",
+    "account": "Account",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forget": "Forget password?",
+    "login": "LOGIN"
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Navbar from '../components/navbar';
+import '../i18n';
 
 type TProps = {
   title: string;

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
   display: flex;
@@ -30,24 +31,29 @@ const Item = styled.div`
   }
 `;
 
-const linkConfig = [
-  { name: '首頁', ref: '/', icon: 'home_icon' },
-  { name: '投標', ref: '/bidding', icon: 'b_icon' },
-  { name: '競標動態', ref: '/status', icon: 'bs_icon' },
-  { name: '電力資訊', ref: '/power_info', icon: 'flash_icon' },
-  { name: '設定', ref: '/setting', icon: 'setting_icon' },
-];
-
 enum Color {
   WHITE = 'white_icon',
   ORANGE = 'orange_icon',
 }
 
 const Navlinks: FunctionComponent = () => {
+  const { t } = useTranslation();
   const [path, setPath] = useState('/');
   useEffect(() => {
     setPath(window.location.pathname);
   }, []);
+
+  const linkConfig = [
+    { name: t('navbar.page.home'), ref: '/', icon: 'home_icon' },
+    { name: t('navbar.page.bidding'), ref: '/bidding', icon: 'b_icon' },
+    { name: t('navbar.page.status'), ref: '/status', icon: 'bs_icon' },
+    {
+      name: t('navbar.page.powerInfo'),
+      ref: '/power_info',
+      icon: 'flash_icon',
+    },
+    { name: t('navbar.page.setting'), ref: '/setting', icon: 'setting_icon' },
+  ];
 
   return (
     <Container>
@@ -68,7 +74,7 @@ const Navlinks: FunctionComponent = () => {
       ))}
       <Item>
         <img src="/static/nav/white_icon/logout_icon.png" />
-        <a href="/">登出</a>
+        <a href="/">{t('navbar.logout')}</a>
       </Item>
     </Container>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { fontWeight } from '@material-ui/system';
 
 interface IData {
@@ -43,6 +44,8 @@ const Circle = styled.div<{ isSelect: boolean }>`
 `;
 
 const DisplayData: React.FC<IProps> = (props: IProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="container">
       <div className="left">
@@ -53,60 +56,78 @@ const DisplayData: React.FC<IProps> = (props: IProps) => {
               : '/static/status/box_grey.png'
           }
         />
-        <span style={{ fontSize: '20px', fontWeight: 'bold' }}>達成率</span>
+        <span style={{ fontSize: '20px', fontWeight: 'bold' }}>
+          {t('status.display.achievement')}
+        </span>
         <span style={{ fontSize: '70px' }}>
           {props.data.achievement !== null ? props.data.achievement : '--%'}
         </span>
       </div>
       <div className="right">
         <div className="circlelist">
-          <Circle isSelect={props.data.status === 1}>投標中</Circle>
-          <Circle isSelect={props.data.status === 2}>已投標</Circle>
+          <Circle isSelect={props.data.status === 1}>
+            {t('status.display.bidding')}
+          </Circle>
+          <Circle isSelect={props.data.status === 2}>
+            {t('status.display.bidden')}
+          </Circle>
           <Circle
             isSelect={props.data.status === 3}
             style={props.data.status === 0 ? { borderColor: '#757575' } : {}}
           >
-            得標
-            <br />或<br />
-            未得標
+            {t('status.display.win')}
+            <br />
+            {t('status.display.or')}
+            <br />
+            {t('status.display.fail')}
           </Circle>
-          <Circle isSelect={props.data.status === 4}>執行中</Circle>
-          <Circle isSelect={props.data.status === 5}>結算中</Circle>
-          <Circle isSelect={props.data.status === 6}>已結算</Circle>
+          <Circle isSelect={props.data.status === 4}>
+            {t('status.display.trading')}
+          </Circle>
+          <Circle isSelect={props.data.status === 5}>
+            {t('status.display.settlemant')}
+          </Circle>
+          <Circle isSelect={props.data.status === 6}>
+            {t('status.display.complete')}
+          </Circle>
         </div>
         <div className="datalist">
           <div className="col">
             <span style={{ width: '50%', marginLeft: '30px' }}>
-              交易編號：{props.data.id}
+              {t('status.display.txId')}：{props.data.id}
             </span>
             <span style={{ width: '50%', marginLeft: '30px' }}>
-              上鏈時間：{!!props.data.upload ? props.data.upload : '--'}
+              {t('status.display.uploadTime')}：
+              {!!props.data.upload ? props.data.upload : '--'}
             </span>
           </div>
           <div className="col">
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              對象：
+              {t('status.display.counterpart')}：
               {!!props.data.counterpart ? props.data.counterpart.name : '--'}
             </span>
           </div>
           <div className="col">
             <span style={{ width: '100%', marginLeft: '30px' }}>
-              地址：
+              {t('status.display.address')}：
               {!!props.data.counterpart ? props.data.counterpart.address : '--'}
             </span>
           </div>
           <div className="col">
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              投標度數：{props.data.bid_value}
+              {t('status.display.bidAmount')}：{props.data.bid_value}
             </span>
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              得標度數：{!!props.data.win ? props.data.win.value : '0'}
+              {t('status.display.winAmount')}：
+              {!!props.data.win ? props.data.win.value : '0'}
             </span>
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              總金額：{!!props.data.win ? props.data.win.total_price : '0'}
+              {t('status.display.totalPrice')}：
+              {!!props.data.win ? props.data.win.total_price : '0'}
             </span>
             <span style={{ width: '25%', marginLeft: '30px' }}>
-              結算金額：{!!props.data.settlement ? props.data.settlement : '0'}
+              {t('status.display.settlementPrice')}：
+              {!!props.data.settlement ? props.data.settlement : '0'}
             </span>
           </div>
         </div>
