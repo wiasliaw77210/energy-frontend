@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { IConnectedAMI } from '../../typings/ConnectedAMI';
+import { IConnectedAMI } from '../../constants';
 import { AMIListItem } from './AMIListItem';
 
 interface IProps {

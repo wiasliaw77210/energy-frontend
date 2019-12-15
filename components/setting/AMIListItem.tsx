@@ -1,5 +1,5 @@
 import React from 'react';
-import { IConnectedAMI } from '../../typings/ConnectedAMI';
+import { IConnectedAMI } from '../../constants';
 
 interface IProps {
   ami: IConnectedAMI;
