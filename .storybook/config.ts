@@ -1,18 +1,9 @@
-import { configure, addParameters } from '@storybook/react';
-import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
+import { configure, addDecorator } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 
-addParameters({
-  docs: {
-    container: DocsContainer,
-    page: DocsPage,
-  },
-});
+addDecorator(withInfo);
 
-const reqComponents = require.context(
-  '../components/login',
-  true,
-  /\.stories\.tsx$/,
-);
+const reqComponents = require.context('../components', true, /\.stories\.tsx$/);
 
 const loadStory = () => {
   reqComponents.keys().forEach(reqComponents);

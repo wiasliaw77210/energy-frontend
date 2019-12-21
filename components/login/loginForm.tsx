@@ -63,7 +63,6 @@ const Login: React.FC = () => {
   const [loginInfo, setLoginInfo] = useState({ account: '', password: '' });
 
   useEffect(() => {
-    // pre-check
     if (
       null !== localStorage.getItem('BEMS_user_id') &&
       null !== localStorage.getItem('BEMS_bearer')

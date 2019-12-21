@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
@@ -40,14 +40,15 @@ enum Color {
 const Navlinks: FunctionComponent = () => {
   const { t } = useTranslation();
   const [path, setPath] = useState('/');
+  const router = useRouter();
 
   useEffect(() => {
-    setPath(Router.pathname);
+    setPath(router.pathname);
   }, []);
 
   const logout = () => {
     localStorage.clear();
-    Router.push('/login');
+    router.push('/login');
   };
 
   const linkConfig = [
