@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import LoginForm from '../components/loginForm';
+import LoginForm from '../components/login';
 
 const Login: React.FC = () => (
   <div>
