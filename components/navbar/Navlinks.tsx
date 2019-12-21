@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
+import Router from 'next/router';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
@@ -39,9 +40,15 @@ enum Color {
 const Navlinks: FunctionComponent = () => {
   const { t } = useTranslation();
   const [path, setPath] = useState('/');
+
   useEffect(() => {
-    setPath(window.location.pathname);
+    setPath(Router.pathname);
   }, []);
+
+  const logout = () => {
+    localStorage.clear();
+    Router.push('/login');
+  };
 
   const linkConfig = [
     { name: t('navbar.page.home'), ref: '/', icon: 'home_icon' },
@@ -74,7 +81,9 @@ const Navlinks: FunctionComponent = () => {
       ))}
       <Item>
         <img src="/static/nav/white_icon/logout_icon.png" />
-        <a href="/">{t('navbar.logout')}</a>
+        <a href="#" onClick={() => logout()}>
+          {t('navbar.logout')}
+        </a>
       </Item>
     </Container>
   );

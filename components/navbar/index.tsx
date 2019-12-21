@@ -9,6 +9,7 @@ const getCurrentTime = () => dayjs().format('YYYY/MM/DD HH:mm');
 
 const Navbar = styled.div`
   width: 13.6%;
+  min-width: 240px;
   height: 100vh;
   background-color: #39625e;
   display: flex;
