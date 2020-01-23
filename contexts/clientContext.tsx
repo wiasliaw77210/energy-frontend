@@ -1,71 +1,65 @@
-import React, { PropsWithChildren } from 'react';
-import Router from 'next/router';
+import React, { PropsWithChildren, useReducer, useEffect } from 'react';
+import Router, { useRouter } from 'next/router';
 
 export interface IClient {
   user_id: string;
   bearer: string;
 }
 
-export interface IUpdate {
-  onUpdate: (data: IClient) => void;
-}
+type TClientAction = {
+  type: 'UPDATE' | 'CLEAR';
+  payload: IClient;
+};
 
-export const CtxContext = React.createContext<IClient & IUpdate>({
+type TClientDispatch = (state: IClient, action: TClientAction) => IClient;
+
+export const ClientStateContext = React.createContext<IClient>({
   user_id: '',
   bearer: '',
-  onUpdate: () => {
-    return;
-  },
 });
+export const ClientDispatchContext = React.createContext<
+  React.Dispatch<TClientAction>
+>(null);
 
-export class ClientProvider extends React.Component<
-  PropsWithChildren<{}>,
-  IClient
-> {
-  constructor(props: PropsWithChildren<{}>) {
-    super(props);
-    this.handleUpdate = this.handleUpdate.bind(this);
-    this.state = {
-      user_id: '',
-      bearer: '',
-    };
+const reducer: TClientDispatch = (
+  state: IClient,
+  action: { type: string; payload: IClient },
+) => {
+  switch (action.type) {
+    case 'UPDATE':
+      return action.payload;
+    case 'CLEAR':
+      return { user_id: '', bearer: '' };
+    default:
+      throw new Error('Undefined Error');
   }
+};
 
-  handleUpdate(data: IClient) {
-    this.setState(data);
-  }
+export const ClientProvider: React.FC = (props: PropsWithChildren<{}>) => {
+  const { pathname } = useRouter();
+  const [userData, userDispatch] = useReducer(reducer, {
+    user_id: '',
+    bearer: '',
+  });
 
-  componentDidMount() {
-    // fetch tokens
-    const tempData: IClient = {
-      user_id:
-        '' !== this.state.user_id
-          ? this.state.user_id
-          : localStorage.getItem('BEMS_user_id') || '',
-      bearer:
-        '' !== this.state.user_id
-          ? this.state.bearer
-          : localStorage.getItem('BEMS_bearer') || '',
-    };
-    if ('' === tempData.user_id || '' === tempData.bearer) {
+  useEffect(() => {
+    const fetchData: IClient = JSON.parse(localStorage.getItem('BEMS_user'));
+    if (null === fetchData) {
       Router.push('/login');
     } else {
-      this.handleUpdate(tempData);
+      userDispatch({
+        type: 'UPDATE',
+        payload: fetchData,
+      });
+      Router.push(pathname);
     }
-  }
+  }, []);
 
-  render() {
-    return (
-      <CtxContext.Provider
-        value={{
-          ...this.state,
-          onUpdate: this.handleUpdate,
-        }}
-      >
-        {this.props.children}
-      </CtxContext.Provider>
-    );
-  }
-}
-
-export const ClientConsumer = CtxContext.Consumer;
+  return (
+    <ClientDispatchContext.Provider value={userDispatch}>
+      <ClientStateContext.Provider value={userData}>
+        {props.children}
+      </ClientStateContext.Provider>
+    </ClientDispatchContext.Provider>
+  );
+};
