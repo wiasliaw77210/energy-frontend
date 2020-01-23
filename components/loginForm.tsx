@@ -88,7 +88,7 @@ const Login: React.FC = () => {
       userDispatch({
         type: 'UPDATE',
         payload: {
-          user_id: response.id,
+          userID: response.id,
           bearer: response.bearer,
         },
       });

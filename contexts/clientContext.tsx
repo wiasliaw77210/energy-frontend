@@ -2,7 +2,7 @@ import React, { PropsWithChildren, useReducer, useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 
 export interface IClient {
-  user_id: string;
+  userID: string;
   bearer: string;
 }
 
@@ -14,7 +14,7 @@ type TClientAction = {
 type TClientDispatch = (state: IClient, action: TClientAction) => IClient;
 
 export const ClientStateContext = React.createContext<IClient>({
-  user_id: '',
+  userID: '',
   bearer: '',
 });
 export const ClientDispatchContext = React.createContext<
@@ -29,7 +29,7 @@ const reducer: TClientDispatch = (
     case 'UPDATE':
       return action.payload;
     case 'CLEAR':
-      return { user_id: '', bearer: '' };
+      return { userID: '', bearer: '' };
     default:
       throw new Error('Undefined Error');
   }
@@ -38,7 +38,7 @@ const reducer: TClientDispatch = (
 export const ClientProvider: React.FC = (props: PropsWithChildren<{}>) => {
   const { pathname } = useRouter();
   const [userData, userDispatch] = useReducer(reducer, {
-    user_id: '',
+    userID: '',
     bearer: '',
   });
 
