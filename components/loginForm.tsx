@@ -2,7 +2,7 @@ import React, { useState, useContext, createRef } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { CtxContext } from '../contexts/clientContext';
+import { ClientDispatchContext } from '../contexts/clientContext';
 import { runtimeConfig } from '../utils';
 import '../i18n';
 
@@ -60,7 +60,7 @@ const SpanSelect = styled.span<{ isClick: boolean }>`
 const Login: React.FC = () => {
   const { t } = useTranslation();
   const [isRemem, setRemem] = useState(false);
-  const { user_id, bearer, onUpdate } = useContext(CtxContext);
+  const userDispatch = useContext(ClientDispatchContext);
   const formRef = createRef<HTMLFormElement>();
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -85,14 +85,14 @@ const Login: React.FC = () => {
       .catch(() => null);
 
     if (response) {
-      onUpdate({
-        user_id: response.id,
-        bearer: response.bearer,
+      userDispatch({
+        type: 'UPDATE',
+        payload: {
+          user_id: response.id,
+          bearer: response.bearer,
+        },
       });
-      if (isRemem) {
-        localStorage.setItem('BEMS_user_id', response.id);
-        localStorage.setItem('BEMS_bearer', response.bearer);
-      }
+      localStorage.setItem('BEMS_user', JSON.stringify(response));
       Router.push('/');
     }
   };
