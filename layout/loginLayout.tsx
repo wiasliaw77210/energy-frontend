@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { ClientProvider } from '../contexts/clientContext';
 import '../i18n';
 
 type TProps = {
@@ -16,9 +15,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
         <link rel="icon" href="/static/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <main>
-        <ClientProvider>{children}</ClientProvider>
-      </main>
+      <main>{children}</main>
       <style jsx global>{`
         html,
         body {
