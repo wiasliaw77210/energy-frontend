@@ -17,6 +17,7 @@ export const ClientStateContext = React.createContext<IClient>({
   userID: '',
   bearer: '',
 });
+
 export const ClientDispatchContext = React.createContext<
   React.Dispatch<TClientAction>
 >(null);
@@ -43,13 +44,13 @@ export const ClientProvider: React.FC = (props: PropsWithChildren<{}>) => {
   });
 
   useEffect(() => {
-    const fetchData: IClient = JSON.parse(localStorage.getItem('BEMS_user'));
-    if (null === fetchData) {
+    const user: IClient = JSON.parse(localStorage.getItem('BEMS_user'));
+    if (user) {
       Router.push('/login');
     } else {
       userDispatch({
         type: 'UPDATE',
-        payload: fetchData,
+        payload: user,
       });
       Router.push(pathname);
     }
