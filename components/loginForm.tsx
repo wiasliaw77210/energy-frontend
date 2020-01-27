@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, createRef } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import { ClientDispatchContext } from '../contexts/clientContext';
+import { runtimeConfig } from '../utils';
 import '../i18n';
 
-const Block = styled.div`
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 const Form = styled.form`
   width: 476px;
   height: 588px;
@@ -65,113 +60,96 @@ const SpanSelect = styled.span<{ isClick: boolean }>`
 const Login: React.FC = () => {
   const { t } = useTranslation();
   const [isRemem, setRemem] = useState(false);
-  const [loginInfo, setLoginInfo] = useState({ account: '', password: '' });
-  const [userData, setUserData] = useState<any>({ user_id: '', bearer: '' });
-
-  useEffect(() => {
-    // pre-check
-    setUserData({
-      user_id: localStorage.getItem('BEMS_user_id') || '',
-      bearer: localStorage.getItem('BEMS_bearer') || '',
-    });
-    if (userData.user_id !== '' && userData.bearer !== '') {
-      Router.push('/');
-    }
-  }, []);
+  const userDispatch = useContext(ClientDispatchContext);
+  const formRef = createRef<HTMLFormElement>();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const response = await fetch('http://140.116.247.120:5000/login', {
-      method: 'POST',
-      body: JSON.stringify(loginInfo),
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-    })
+
+    let loginData = {};
+    new FormData(formRef.current).forEach((value, key) => {
+      loginData = { ...loginData, [key]: value };
+    });
+
+    const response: { id: string; bearer: string } = await fetch(
+      `${runtimeConfig.MAIN_HOST}/login`,
+      {
+        method: 'POST',
+        body: JSON.stringify(loginData),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+      },
+    )
       .then(resp => resp.json())
-      .catch();
-    if (!!response.id && !!response.bearer) {
-      localStorage.setItem('BEMS_user_id', response.id);
-      localStorage.setItem('BEMS_bearer', response.bearer);
+      .catch(() => null);
+
+    if (response) {
+      userDispatch({
+        type: 'UPDATE',
+        payload: {
+          userID: response.id,
+          bearer: response.bearer,
+        },
+      });
+      localStorage.setItem('BEMS_user', JSON.stringify(response));
       Router.push('/');
     }
   };
 
-  const handleAccount = (event: React.FormEvent<HTMLInputElement>) =>
-    setLoginInfo({
-      ...loginInfo,
-      account: event.currentTarget.value,
-    });
-  const handlePassword = (event: React.FormEvent<HTMLInputElement>) =>
-    setLoginInfo({
-      ...loginInfo,
-      password: event.currentTarget.value,
-    });
-
   return (
-    <React.Fragment>
-      <Block
-        style={{
-          backgroundImage: 'url(/static/login/login_pic.png)',
-          float: 'left',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        }}
-      />
-      <Block
-        style={{
-          float: 'right',
-          backgroundColor: '#f1f2f1',
-        }}
-      >
-        <Form onSubmit={handleSubmit}>
-          <img src="/static/login/login_logo.png" />
-          <DivCenter>
-            <span>{t('login.account')}</span>
-            <input type="text" id="account" onChange={handleAccount} />
-            <span>{t('login.password')}</span>
-            <input type="password" id="password" onChange={handlePassword} />
-            <DivList onClick={() => setRemem(!isRemem)}>
-              <SpanSelect isClick={isRemem}>{t('login.rememberMe')}</SpanSelect>
-              <span className="list">{t('login.forget')}</span>
-            </DivList>
-          </DivCenter>
-          <Button type="submit">{t('login.login')}</Button>
-        </Form>
-        <style jsx>{`
-          input {
-            border-top: 0px;
-            border-left: 0px;
-            border-right: 0px;
-            border-bottom: 1px solid #707070;
-            width: 100%;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-family: Roboto;
-            font-size: 20px;
-            color: #707070;
-          }
-          input:placeholder {
-            font-family: Roboto;
-            font-size: 20px;
-            color: #707070;
-          }
-          span {
-            font-family: Roboto;
-            font-size: 20px;
-            color: #707070;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-family: Roboto;
-          }
-          .list {
-            font-family: Roboto;
-            font-size: 15px;
-            color: #707070;
-          }
-        `}</style>
-      </Block>
-    </React.Fragment>
+    <Form onSubmit={handleSubmit} ref={formRef}>
+      <h1>綠能交易平台</h1>
+      <DivCenter>
+        <label htmlFor="account">{t('login.account')}</label>
+        <input type="text" id="account" name="account" />
+        <label htmlFor="password">{t('login.password')}</label>
+        <input type="password" id="password" name="password" />
+        <DivList onClick={() => setRemem(!isRemem)}>
+          <SpanSelect isClick={isRemem}>{t('login.rememberMe')}</SpanSelect>
+          <span className="list">{t('login.forget')}</span>
+        </DivList>
+      </DivCenter>
+      <Button type="submit">{t('login.login')}</Button>
+      <style jsx>{`
+        h1 {
+          font-family: NotoSerifTC;
+          font-size: 37px;
+          margin: 0;
+          color: #39625e;
+        }
+        input {
+          border-top: 0px;
+          border-left: 0px;
+          border-right: 0px;
+          border-bottom: 1px solid #707070;
+          width: 100%;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          font-family: Roboto;
+          font-size: 20px;
+          color: #707070;
+        }
+        input:placeholder {
+          font-family: Roboto;
+          font-size: 20px;
+          color: #707070;
+        }
+        label {
+          font-family: Roboto;
+          font-size: 20px;
+          color: #707070;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          font-family: Roboto;
+        }
+        .list {
+          font-family: Roboto;
+          font-size: 15px;
+          color: #707070;
+        }
+      `}</style>
+    </Form>
   );
 };
 
