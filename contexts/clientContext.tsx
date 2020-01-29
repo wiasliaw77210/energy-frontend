@@ -46,13 +46,13 @@ export const ClientProvider: React.FC = (props: PropsWithChildren<{}>) => {
   useEffect(() => {
     const user: IClient = JSON.parse(localStorage.getItem('BEMS_user'));
     if (user) {
-      Router.push('/login');
-    } else {
       userDispatch({
         type: 'UPDATE',
         payload: user,
       });
       Router.push(pathname);
+    } else {
+      Router.push('/login');
     }
   }, []);
 
