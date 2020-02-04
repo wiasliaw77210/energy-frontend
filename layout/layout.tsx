@@ -35,8 +35,8 @@ const Page: React.FC<TProps> = ({ title, children }) => {
         html,
         body {
           margin: 0;
-          font-family: 'Roboto', sans-serif;
           width: 100%;
+          font-size: 18px;
         }
         *,
         *::before,
@@ -62,6 +62,13 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           flex: 1;
           flex-direction: column;
           background-color: #f1f2f1;
+        }
+
+        @media (max-width: 1280px) {
+          html,
+          body {
+            font-size: 16px;
+          }
         }
       `}</style>
     </div>

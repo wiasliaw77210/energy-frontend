@@ -9,7 +9,9 @@ const getCurrentTime = () => dayjs().format('YYYY/MM/DD HH:mm');
 
 const Navbar = styled.div`
   width: 13.6%;
+  min-width: 200px;
   height: 100vh;
+  min-height: 900px;
   background-color: #39625e;
   display: flex;
   justify-content: space-between;
@@ -18,9 +20,9 @@ const Navbar = styled.div`
 `;
 
 const H1 = styled.div`
-  font-size: 30px;
+  font-size: 26px;
   color: #fff;
-  margin-top: 23px;
+  margin-top: 1rem;
   text-align: center;
 `;
 
@@ -29,16 +31,18 @@ const TimeSpan = styled.span`
   letter-spacing: 0;
   color: #ffffff;
   opacity: 1;
-  margin-bottom: 54px;
+  margin-bottom: 3rem;
 `;
+
 const Flexbox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
+
 const Resize = styled.div`
-  height: 3rem;
+  height: 1.78rem;
 `;
 
 const Nav: React.FC = () => {
