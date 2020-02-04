@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
@@ -14,7 +15,7 @@ const Item = styled.div`
   justify-content: center;
   align-items: center;
   width: inherit;
-  margin-bottom: 18px;
+  margin-bottom: 1.56rem;
 
   > a {
     font-size: 20px;
@@ -27,7 +28,8 @@ const Item = styled.div`
   }
 
   > img {
-    margin: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
   }
 `;
 
@@ -39,8 +41,9 @@ enum Color {
 const Navlinks: FunctionComponent = () => {
   const { t } = useTranslation();
   const [path, setPath] = useState('/');
+  const { pathname } = useRouter();
   useEffect(() => {
-    setPath(window.location.pathname);
+    setPath(pathname);
   }, []);
 
   const linkConfig = [
