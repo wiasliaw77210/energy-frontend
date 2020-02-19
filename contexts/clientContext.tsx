@@ -1,66 +1,64 @@
-import React, { PropsWithChildren, useReducer, useEffect } from 'react';
-import Router, { useRouter } from 'next/router';
+import React, { PropsWithChildren } from 'react';
+import Router from 'next/router';
 
-export interface IClient {
+interface IClient {
   userID: string;
   bearer: string;
 }
 
-type TClientAction = {
+interface IClientContext {
+  user: IClient;
+  dispatch: (action: IClientAction) => any;
+}
+
+interface IClientAction {
   type: 'UPDATE' | 'CLEAR';
-  payload: IClient;
-};
+  payload: IClient | null;
+}
 
-type TClientDispatch = (state: IClient, action: TClientAction) => IClient;
+export const ClientStateContext = React.createContext<IClientContext>(null);
 
-export const ClientStateContext = React.createContext<IClient>({
-  userID: '',
-  bearer: '',
-});
-
-export const ClientDispatchContext = React.createContext<
-  React.Dispatch<TClientAction>
->(null);
-
-const reducer: TClientDispatch = (
-  state: IClient,
-  action: { type: string; payload: IClient },
-) => {
-  switch (action.type) {
-    case 'UPDATE':
-      return action.payload;
-    case 'CLEAR':
-      return { userID: '', bearer: '' };
-    default:
-      throw new Error('Undefined Error');
+export class ClientProvider extends React.Component<
+  PropsWithChildren<{}>,
+  IClientContext
+> {
+  constructor(props: PropsWithChildren<{}>) {
+    super(props);
+    this.state = {
+      user: null,
+      dispatch: this.handleDispatch,
+    };
   }
-};
 
-export const ClientProvider: React.FC = (props: PropsWithChildren<{}>) => {
-  const { pathname } = useRouter();
-  const [userData, userDispatch] = useReducer(reducer, {
-    userID: '',
-    bearer: '',
-  });
-
-  useEffect(() => {
-    const user: IClient = JSON.parse(localStorage.getItem('BEMS_user'));
-    if (user) {
-      userDispatch({
-        type: 'UPDATE',
-        payload: user,
-      });
-      Router.push(pathname);
+  componentDidMount() {
+    const storageData: IClient = JSON.parse(localStorage.getItem('BEMS_user'));
+    if (storageData) {
+      this.setState({ user: storageData });
+      Router.push(Router.pathname);
     } else {
       Router.push('/login');
     }
-  }, []);
+  }
 
-  return (
-    <ClientDispatchContext.Provider value={userDispatch}>
-      <ClientStateContext.Provider value={userData}>
-        {props.children}
+  handleDispatch = (action: IClientAction) => {
+    switch (action.type) {
+      case 'CLEAR': {
+        return this.setState({ user: { userID: '', bearer: '' } });
+      }
+      case 'UPDATE': {
+        return this.setState({ user: action.payload });
+      }
+      default: {
+        throw new Error('Unknown Action Type');
+      }
+    }
+  };
+
+  render() {
+    return (
+      <ClientStateContext.Provider value={this.state}>
+        {this.props.children}
       </ClientStateContext.Provider>
-    </ClientDispatchContext.Provider>
-  );
-};
+    );
+  }
+}
