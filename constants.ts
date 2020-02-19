@@ -27,3 +27,14 @@ export interface IPowerInfoData {
   type: PowerType;
   url: string;
 }
+
+/**
+ * User
+ */
+export interface IUserInfo {
+  username: string;
+  avatar: string;
+  balance: number;
+  address: string;
+  ETH_address: string;
+}
