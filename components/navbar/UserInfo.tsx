@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Translation } from 'react-i18next';
+import { IUserInfo } from '../../constants';
+
+interface IProps {
+  info: IUserInfo;
+}
 
 const Container = styled.div`
   display: flex;
@@ -34,15 +39,17 @@ const Item = styled.div`
   }
 `;
 
-export default (() => (
+export default ((props: IProps) => (
   <Container>
     <UserImg src="https://cdn2.iconfinder.com/data/icons/business-management-isometric-awesome-design/512/Office_Building-512.png" />
     <Item>
-      <Translation>{t => <span>{t('navbar.userName')}</span>}</Translation>
+      <span>{props.info.username}</span>
     </Item>
     <Item>
       <img style={{ marginRight: '20px' }} src="/static/nav/wallet_icon.png" />
-      <span style={{ font: '22px/25px Regular Roboto' }}>$ 1000.00</span>
+      <span style={{ font: '22px/25px Regular Roboto' }}>
+        $ {props.info.balance}
+      </span>
     </Item>
   </Container>
-)) as React.FC;
+)) as React.FC<IProps>;

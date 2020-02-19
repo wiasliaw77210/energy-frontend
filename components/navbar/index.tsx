@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 import UserInfo from './UserInfo';
 import Navlinks from './Navlinks';
-import { useTranslation } from 'react-i18next';
+import { ClientStateContext } from '../../contexts/clientContext';
+import { runtimeConfig } from '../../utils';
+import { IUserInfo } from '../../constants';
 
 const getCurrentTime = () => dayjs().format('YYYY/MM/DD HH:mm');
 
@@ -48,6 +51,16 @@ const Resize = styled.div`
 const Nav: React.FC = () => {
   const { t } = useTranslation();
   const [timeString, setTime] = useState(getCurrentTime());
+  const [info, setInfo] = useState<IUserInfo>({
+    username: '',
+    balance: 0,
+    ETH_address: '',
+    address: '',
+    avatar: '',
+  });
+  const { user } = useContext(ClientStateContext);
+
+  // timer
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(getCurrentTime());
@@ -56,11 +69,31 @@ const Nav: React.FC = () => {
       clearInterval(timer);
     };
   }, []);
+
+  // user info
+  useEffect(() => {
+    (async () => {
+      if (!user) {
+        return;
+      }
+      const response = await fetch(`${runtimeConfig.MAIN_HOST}/user`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.bearer}`,
+        }),
+      });
+      const rawData: IUserInfo = await response.json();
+      setInfo(rawData);
+    })();
+  }, [user]);
+
   return (
     <Navbar>
       <H1>{t('navbar.title')}</H1>
       <Flexbox>
-        <UserInfo />
+        <UserInfo info={info} />
         <Resize />
         <Navlinks />
       </Flexbox>
