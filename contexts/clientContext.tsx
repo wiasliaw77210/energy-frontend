@@ -51,7 +51,7 @@ export class ClientProvider extends React.Component<
       default: {
         throw new Error('Unknown Action Type');
       }
-    }
+    } // tslint:disable-next-line
   };
 
   render() {
