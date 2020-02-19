@@ -36,6 +36,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
         body {
           margin: 0;
           width: 100%;
+          min-width: 1280px;
           font-size: 18px;
         }
         *,
@@ -58,7 +59,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
 
         .main {
           display: flex;
-          padding: 94px 64px;
+          padding: 5rem 3.5rem 0 3.5rem;
           flex: 1;
           flex-direction: column;
           background-color: #f1f2f1;
