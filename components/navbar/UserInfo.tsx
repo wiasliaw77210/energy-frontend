@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Translation } from 'react-i18next';
 import { IUserInfo } from '../../constants';
 
 interface IProps {
@@ -43,7 +42,7 @@ export default ((props: IProps) => (
   <Container>
     <UserImg src="https://cdn2.iconfinder.com/data/icons/business-management-isometric-awesome-design/512/Office_Building-512.png" />
     <Item>
-      <span>{props.info.username}</span>
+      <span style={{ padding: '0 20px 0 20px' }}>{props.info.username}</span>
     </Item>
     <Item>
       <img style={{ marginRight: '20px' }} src="/static/nav/wallet_icon.png" />

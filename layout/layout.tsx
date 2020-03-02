@@ -38,6 +38,8 @@ const Page: React.FC<TProps> = ({ title, children }) => {
           width: 100%;
           min-width: 1280px;
           font-size: 18px;
+          overflow-x: hidden;
+          overflow-y: auto;
         }
         *,
         *::before,
