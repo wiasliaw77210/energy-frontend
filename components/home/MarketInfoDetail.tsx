@@ -3,21 +3,21 @@ import styled from 'styled-components';
 
 const InfoBlock = styled.div`
   width: auto;
-  height: 45px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.19;
   letter-spacing: normal;
   text-align: center;
+  margin: 0.25rem 0 0.25rem 0;
 
   .sub-title {
-    font-size: 32px;
-    margin-right: 28px;
+    font-size: 1.78rem;
+    margin-right: 1.56rem;
   }
 
   .detail {
-    font-size: 28px;
+    font-size: 1.56rem;
     color: #707070;
   }
 `;

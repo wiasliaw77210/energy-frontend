@@ -2,7 +2,7 @@ import React, { useState, useContext, createRef } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { ClientDispatchContext } from '../contexts/clientContext';
+import { ClientStateContext } from '../contexts/clientContext';
 import { runtimeConfig } from '../utils';
 import '../i18n';
 
@@ -60,7 +60,7 @@ const SpanSelect = styled.span<{ isClick: boolean }>`
 const Login: React.FC = () => {
   const { t } = useTranslation();
   const [isRemem, setRemem] = useState(false);
-  const userDispatch = useContext(ClientDispatchContext);
+  const { dispatch } = useContext(ClientStateContext);
   const formRef = createRef<HTMLFormElement>();
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -85,7 +85,7 @@ const Login: React.FC = () => {
       .catch(() => null);
 
     if (response) {
-      userDispatch({
+      dispatch({
         type: 'UPDATE',
         payload: {
           userID: response.id,

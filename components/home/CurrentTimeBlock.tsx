@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  createRef,
+} from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import MarketInfoDetail from './MarketInfoDetail';
@@ -12,7 +17,6 @@ const getNextTime = () =>
 
 const Block = styled.div`
   width: calc(50% - 13px);
-  height: 336px;
   border-radius: 10px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
@@ -49,7 +53,7 @@ const TimeContainer = styled.div`
 
 const Time = styled.span`
   font-family: Roboto;
-  font-size: 56px;
+  font-size: 2.5rem;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -62,7 +66,7 @@ const Time = styled.span`
 
 const MarketInfo = styled.div`
   width: 100%;
-  height: 45px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -72,23 +76,41 @@ const MarketInfo = styled.div`
 const CurrentTimeBlock: FunctionComponent = () => {
   const { t } = useTranslation();
   const [hour, setHour] = useState(getCurrentTime());
+  const marketRef = createRef<HTMLDivElement>();
+
   useEffect(() => {
     const timer = setInterval(() => {
       setHour(getCurrentTime());
     }, 1000);
+    handleResize();
     return () => {
       clearInterval(timer);
     };
   }, []);
+
+  useEffect(() => {
+    if (marketRef.current) {
+      window.addEventListener('resize', handleResize, false);
+    }
+    return () => {
+      window.removeEventListener('resize', handleResize, false);
+    };
+  }, [marketRef]);
+
+  const handleResize = () => {
+    marketRef.current.offsetWidth <= 700
+      ? (marketRef.current.style.flexDirection = 'column')
+      : (marketRef.current.style.flexDirection = 'row');
+  };
 
   return (
     <Block>
       <Title>{t('home.currentTimeBlock.title')}</Title>
       <TimeContainer>
         <img src={`/static/home/green_b_icon.png`} alt="b_icon" />
-        <Time>{hour + ' : 00 - ' + getNextTime() + ' : 00'}</Time>
+        <Time>{`${hour} : 00 - ${getNextTime()} : 00`}</Time>
       </TimeContainer>
-      <MarketInfo>
+      <MarketInfo ref={marketRef}>
         <MarketInfoDetail subTitle={t('buy')} value={'40'} price={'5'} />
         <MarketInfoDetail subTitle={t('sell')} value={'20'} price={'5'} />
       </MarketInfo>

@@ -5,9 +5,8 @@ import CurrentTimeBlock from './CurrentTimeBlock';
 import BiddingInfo from './BiddingInfo';
 import GraphContainer from './GraphContainer';
 
-const UpperContainer = styled.div`
+const Container = styled.div`
   width: 100%;
-  height: 336px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -16,11 +15,11 @@ const UpperContainer = styled.div`
 const HomeContainer: FunctionComponent = () => {
   return (
     <div>
-      <UpperContainer>
+      <Container>
         <CurrentTimeBlock />
         <BiddingInfo />
-      </UpperContainer>
-      <GraphContainer />
+      </Container>
+      {/* <GraphContainer /> */}
     </div>
   );
 };
