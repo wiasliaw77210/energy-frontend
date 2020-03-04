@@ -19,7 +19,7 @@ const HomeContainer: FunctionComponent = () => {
         <CurrentTimeBlock />
         <BiddingInfo />
       </Container>
-      {/* <GraphContainer /> */}
+      <GraphContainer />
     </div>
   );
 };
