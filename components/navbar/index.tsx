@@ -14,12 +14,14 @@ const Navbar = styled.div`
   width: 13.6%;
   min-width: 200px;
   height: 100vh;
-  min-height: 900px;
   background-color: #39625e;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const H1 = styled.div`

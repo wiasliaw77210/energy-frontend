@@ -16,7 +16,7 @@ const getNextTime = () =>
     .format('HH');
 
 const Block = styled.div`
-  width: calc(50% - 13px);
+  width: 100%;
   border-radius: 10px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;

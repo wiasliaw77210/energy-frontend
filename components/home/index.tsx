@@ -7,19 +7,23 @@ import GraphContainer from './GraphContainer';
 
 const Container = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 26px;
+  grid-row-gap: 26px;
+  @media (max-width: 1400px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const HomeContainer: FunctionComponent = () => {
   return (
-    <div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
       <Container>
         <CurrentTimeBlock />
         <BiddingInfo />
       </Container>
-      {/* <GraphContainer /> */}
+      <GraphContainer />
     </div>
   );
 };
