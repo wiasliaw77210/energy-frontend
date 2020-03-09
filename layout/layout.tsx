@@ -26,6 +26,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
       </Head>
       <div className="container">
         <Navbar />
+        <div style={{ width: '13.6%', minWidth: '200px' }} />
         <div className="main">
           <h1 className="title">{title}</h1>
           <div className="content">{children}</div>
@@ -61,7 +62,7 @@ const Page: React.FC<TProps> = ({ title, children }) => {
 
         .main {
           display: flex;
-          padding: 5rem 3.5rem 0 3.5rem;
+          padding: 5rem 3.5rem 5rem 3.5rem;
           flex: 1;
           flex-direction: column;
           background-color: #f1f2f1;
