@@ -53,7 +53,8 @@
       "account": "帳號",
       "password": "密碼",
       "address": "地址",
-      "ethAddress": "以太坊地址"
+      "ethAddress": "以太坊地址",
+      "lang": "語言"
     },
     "editIcon": {
       "hint": "更改頭像",

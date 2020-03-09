@@ -53,7 +53,8 @@
       "account": "account",
       "password": "password",
       "address": "address",
-      "ethAddress": "eth_address"
+      "ethAddress": "eth_address",
+      "lang": "language"
     },
     "editIcon": {
       "hint": "Change Avatar",
