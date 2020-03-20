@@ -56,6 +56,7 @@ interface IProps {
   account?: string;
   address?: string;
   eth_address?: string;
+  updatePop: () => void;
 }
 
 export default ((props: IProps) => {
@@ -77,7 +78,9 @@ export default ((props: IProps) => {
       <P>
         <Bold>{t('setting.userAttributes.password')}：</Bold>
         {`**************`}
-        <Button style={{ float: 'right' }}>更改密碼</Button>
+        <Button style={{ float: 'right' }} onClick={props.updatePop}>
+          更改密碼
+        </Button>
       </P>
       <P>
         <Bold>{t('setting.userAttributes.address')}：</Bold>

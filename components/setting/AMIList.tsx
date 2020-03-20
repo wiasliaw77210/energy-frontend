@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IConnectedAMI } from '../../constants';
+import { IAmis } from '../../constants';
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,14 +26,14 @@ const P = styled.p`
 
 const TableRow = styled.div`
   display: grid;
-  grid-template-columns: 25% 55% 20%;
+  grid-template-columns: 20% 55% 25%;
 `;
 
 const TableSpan = styled.span<{ type?: string; align?: 'center' | 'left' }>`
   color: #707070;
   font-size: ${props => ('title' === props.type ? '22px' : '20px')};
   text-align: ${props => ('left' === props.align ? 'left' : 'center')};
-  padding-bottom: 1rem;
+  padding: 0 10px 1rem 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -48,7 +48,7 @@ const Hr = styled.hr`
 `;
 
 interface IProps {
-  ami_array: IConnectedAMI[];
+  ami_array: IAmis[];
 }
 
 export default ((props: IProps) => {
@@ -63,11 +63,11 @@ export default ((props: IProps) => {
           </TableSpan>
           <TableSpan type="title">名稱</TableSpan>
         </TableRow>
-        {props.ami_array.map((ami: IConnectedAMI, id) => (
+        {props.ami_array.map((ami: IAmis, id) => (
           <TableRow key={id}>
-            <TableSpan>{ami.num}</TableSpan>
+            <TableSpan>{id + 1}</TableSpan>
             <TableSpan align="left">{ami.id}</TableSpan>
-            <TableSpan>{ami.type}</TableSpan>
+            <TableSpan>{ami.description}</TableSpan>
             <Hr />
           </TableRow>
         ))}
