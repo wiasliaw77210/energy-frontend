@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import { runtimeConfig } from '../../utils';
 
 const Container = styled.div<{ isPop: boolean }>`
@@ -68,6 +69,7 @@ export default ((props: IProps) => {
   const [newpw, setNewpw] = useState<string>('');
   const [checkpw, setCheckpw] = useState<string>('');
   const [isErr, setErr] = useState<boolean>(false);
+  const router = useRouter();
   const changeOldPw = (event: React.SyntheticEvent<HTMLInputElement>) => {
     event.preventDefault();
     setOldpw(event.currentTarget.value);
@@ -105,7 +107,7 @@ export default ((props: IProps) => {
       body: JSON.stringify(bodyData),
     });
     if (response.status === 200) {
-      // console.log('change passwork success');
+      router.push('/login');
     }
   };
   const handleClick = (event: React.SyntheticEvent) => {
