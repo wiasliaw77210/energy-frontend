@@ -37,7 +37,6 @@ const Page: React.FC<TProps> = ({ title, children }) => {
         body {
           margin: 0;
           width: 100%;
-          min-width: 1280px;
           font-size: 18px;
           overflow-x: hidden;
           overflow-y: auto;

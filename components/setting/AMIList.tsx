@@ -1,75 +1,77 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { IConnectedAMI } from '../../constants';
-import { AMIListItem } from './AMIListItem';
+import styled from 'styled-components';
+import { IAmis } from '../../constants';
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  min-width: 400px;
+  height: 437px;
+  background-color: #fff;
+  overflow-x: hiddle;
+  overflow-y: auto;
+`;
+
+const P = styled.p`
+  color: #707070;
+  font-size: 22px;
+  font-weight: bold;
+  padding-left: 45px;
+`;
+
+const TableRow = styled.div`
+  display: grid;
+  grid-template-columns: 20% 55% 25%;
+`;
+
+const TableSpan = styled.span<{ type?: string; align?: 'center' | 'left' }>`
+  color: #707070;
+  font-size: ${props => ('title' === props.type ? '22px' : '20px')};
+  text-align: ${props => ('left' === props.align ? 'left' : 'center')};
+  padding: 0 10px 1rem 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const Hr = styled.hr`
+  margin: 0 0 1rem 0;
+  padding: 0;
+  border-top: 1px solid #e5e5e5;
+  grid-column-start: 1;
+  grid-column-end: 4;
+`;
 
 interface IProps {
-  amis: IConnectedAMI[];
+  ami_array: IAmis[];
 }
 
-export const AMIList: React.FC<IProps> = ({ amis }) => {
-  const { t } = useTranslation();
-  const columConfig = [
-    { name: 'num', value: '', class: 'ami-item' },
-    { name: 'id', value: t('setting.AMIList.column.id'), class: 'ami-item-id' },
-    {
-      name: 'type',
-      value: t('setting.AMIList.column.type'),
-      class: 'ami-item',
-    },
-  ];
-
+export default ((props: IProps) => {
   return (
-    <>
-      <ul className="list">
-        <li className="sub-title" key="sub-title">
-          {t('setting.AMIList.title')}
-        </li>
-        <li className="tuple" key="attribute">
-          {columConfig.map(v => (
-            <span className={v.class} key={v.name}>
-              {v.value}
-            </span>
-          ))}
-        </li>
-        {amis.map((ami, idx) => (
-          <AMIListItem ami={ami} key={idx} />
+    <Wrapper>
+      <Container>
+        <P>已連結電表</P>
+        <TableRow>
+          <TableSpan type="title">電表編號</TableSpan>
+          <TableSpan type="title" align="left">
+            電表辨識碼
+          </TableSpan>
+          <TableSpan type="title">名稱</TableSpan>
+        </TableRow>
+        {props.ami_array.map((ami: IAmis, id) => (
+          <TableRow key={id}>
+            <TableSpan>{id + 1}</TableSpan>
+            <TableSpan align="left">{ami.id}</TableSpan>
+            <TableSpan>{ami.description}</TableSpan>
+            <Hr />
+          </TableRow>
         ))}
-      </ul>
-      <style>
-        {`
-              .list {
-                  width: 50%;
-                  padding: 0px;
-                  background-color: white;
-                  align-self: center;
-                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-              }
-              .sub-title {
-                  padding-top: 30px;
-                  margin-left: 30px;
-                  font-size: 24px;
-                  list-style-type: none;
-                  font-weight: bold;
-                  font-stretch: normal;
-                  font-style: normal;
-                  letter-spacing: normal;
-                  text-align: left;
-                  color: #707070;
-              }
-              .tuple {
-                  height: 70px;
-                  display: flex;
-                  flex-flow: row;
-                  align-items: center;
-                  justify-content: space-around;
-                  list-style-type: none;
-                  color: #707070;
-                  opacity: 1;
-                  letter-spacing: 0;
-              }
-          `}
-      </style>
-    </>
+      </Container>
+    </Wrapper>
   );
-};
+}) as React.FC<IProps>;

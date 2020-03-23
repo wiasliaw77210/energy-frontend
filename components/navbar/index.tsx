@@ -56,7 +56,7 @@ const Nav: React.FC = () => {
   const [info, setInfo] = useState<IUserInfo>({
     username: '',
     balance: 0,
-    ETH_address: '',
+    eth_address: '',
     address: '',
     avatar: '',
   });

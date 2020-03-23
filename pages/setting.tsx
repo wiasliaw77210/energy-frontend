@@ -1,65 +1,76 @@
-import React from 'react';
+import React, { useEffect, useState, FormEvent } from 'react';
 import Layout from '../layout/layout';
 import styled from 'styled-components';
-import { AMIList } from '../components/setting/AMIList';
-import { UserInfoList } from '../components/setting/UserInfoList';
-import { Translation } from 'react-i18next';
-import { PowerType } from '../constants';
-
-const state = {
-  UserInfos: {
-    帳號: 'ShalunC_BEMS',
-    密碼: '************',
-    地址: '台南市歸仁區高發二路360號C區',
-    以太坊地址: '0xFE9181D3C196c163bECEC8aAe9250BCFE0C98F73',
-    account: 'ShalunC_BEMS',
-    password: '************',
-    address: '台南市歸仁區高發二路360號C區',
-    eth_address: '0xFE9181D3C196c163bECEC8aAe9250BCFE0C98F73',
-  },
-  AMIs: [
-    {
-      num: 1,
-      id: '8b46ca3e-b22f-400b-a1b7-1864681ddcdf',
-      type: PowerType.PV,
-    },
-    {
-      num: 2,
-      id: '7928223c-5275-48cf-b306-dd0286936866',
-      type: PowerType.Homepage,
-    },
-    {
-      num: 3,
-      id: 'fe534d44-8b7c-4527-a1de-7b94b19302b8',
-      type: PowerType.WT,
-    },
-    {
-      num: 4,
-      id: '1db5150f-899a-4628-92ae-b1eb51e2822d',
-      type: PowerType.ESS,
-    },
-  ],
-};
+import { useTranslation } from 'react-i18next';
+import { Menu, AMIList, Popup } from '../components/setting';
+import { IUserInfo, IAmis } from '../constants';
+import { runtimeConfig } from '../utils';
 
 const Block = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  @media (max-width: 1400px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const Setting = () => (
-  <Translation>
-    {t => (
-      <Layout title={t('setting.title')}>
-        <Block>
-          <UserInfoList userInfos={state.UserInfos} />
-          <AMIList amis={state.AMIs} />
-        </Block>
-      </Layout>
-    )}
-  </Translation>
-);
+const Setting = () => {
+  const { t } = useTranslation();
+  const [user, setUser] = useState<IUserInfo>({
+    username: '',
+    balance: 0,
+    eth_address: '',
+    address: '',
+    avatar: '',
+  });
+  const [amis, setAmis] = useState<IAmis[]>([]);
+  const [isPop, setPop] = useState<boolean>(false);
+  const updatePop = () => {
+    setPop(!isPop);
+  };
+  useEffect(() => {
+    (async () => {
+      const { bearer } = JSON.parse(localStorage.getItem('BEMS_user'));
+      // user data
+      const userResp = await fetch(`${runtimeConfig.MAIN_HOST}/user`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${bearer}`,
+        }),
+      });
+      const userData: IUserInfo = await userResp.json();
+      setUser(userData);
+      // amis
+      const amisResp = await fetch(`${runtimeConfig.MAIN_HOST}/amis`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${bearer}`,
+        }),
+      });
+      const amisData: IAmis[] = await amisResp.json();
+      setAmis(amisData);
+      return;
+    })();
+  }, []);
+  return (
+    <Layout title={t('setting.title')}>
+      <Popup isPop={isPop} updatePop={updatePop} />
+      <Block>
+        <Menu
+          account={user.username}
+          address={user.address}
+          eth_address={user.eth_address}
+          updatePop={updatePop}
+        />
+        <AMIList ami_array={amis} />
+      </Block>
+    </Layout>
+  );
+};
 
 export default Setting;

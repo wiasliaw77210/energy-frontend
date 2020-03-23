@@ -36,5 +36,15 @@ export interface IUserInfo {
   avatar: string;
   balance: number;
   address: string;
-  ETH_address: string;
+  eth_address: string;
+}
+
+/**
+ * AMIs
+ */
+
+export interface IAmis {
+  id: string;
+  name: string;
+  description: string;
 }
